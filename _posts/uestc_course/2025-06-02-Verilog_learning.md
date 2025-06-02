@@ -21,6 +21,7 @@ tags:
 - 先来一段代码示例：
 
 ```verilog
+
 //module和endmodule闭合，这里模块可以是电路单元也可以是测试单元
 module example(
     input wire a,b,c,   //这里有时会忽略wire，缺省时默认是wire
@@ -28,6 +29,7 @@ module example(
 );
 assign y = (~a & ~b & ~c);    //数据流型
 endmodule
+
 ```
 
 ### 硬件结构描述方式
@@ -35,6 +37,7 @@ endmodule
 1. 结构型：最接近实际硬件结构的描述方式，不易描述功能稍微复杂的电路。常用于实例化语句。
 
 ```verilog
+
 module simple(
     a,b,c,d
 );
@@ -52,11 +55,13 @@ nor(d,w1,w2);// nor 或非门 还有nand 与非门 xor 异或门
     这里元件名可省缺，类似于C++中结构体
 */
 endmoudle
+
 ```
 
 2. 数据流：能比较直观地表达底层的逻辑行为，使用的语句多为和硬件行为一致的并行语句，也只适用于小规模的电路设计。
 
 ```verilog
+
 module simple(
     a,b,c,d
 );
@@ -74,11 +79,13 @@ assign d=~((a & b) | (a & ~c));
     4.配套有deassign可以取消连续赋值
 */
 endmodule
+
 ```
 
 3. 行为级：更加抽象，适合规模大些的电路设计。串行语句可以是其载体。
 
 ```verilog
+
 module simple(
     a,b,c,d
 );
@@ -99,6 +106,7 @@ end
     另外，由于always块于块之间是并行的，所以我们得避免赋值的竞争
 */
 endmodule
+
 ```
 
 ### 数字逻辑电路的设计步骤
@@ -131,6 +139,7 @@ endmodule
 3. 根据逻辑表达式画出电路图(指定用verilog时用代码描述就行)
 
 ```verilog
+
 // 1位全加器 - 数据流级描述
 module full_adder_dataflow(
     input wire A, B, Cin,           // 两个加数和进位输入
@@ -142,6 +151,7 @@ assign S = A ^ B ^ Cin;                        // S = A ⊕ B ⊕ Cin
 assign Cout = (A & B) | (A & Cin) | (B & Cin);   // Cout = A·B + A·Cin + B·Cin
 
 endmodule
+
 ```
 
 4. 搭建电路，验证功能
