@@ -2,7 +2,7 @@
 layout:     post
 title:      "思想道德与法治重点.24"
 subtitle:   " \"Morality and Law\""
-date:       2024-06-01 17:00:00
+date:       2025-06-01 17:00:00
 author:     "LanZinYtt"
 header-img: ""
 catalog: true
