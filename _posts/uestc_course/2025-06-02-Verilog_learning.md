@@ -8,11 +8,14 @@ header-img: ""
 catalog: true
 tags:
     - Computer_Science_Specialized_Courses
+    - Principles_of_Computer_Composition
 ---
 
 <p id = "build"></p>
 
 >计组虐我千百遍~
+
+>在这里我将又示例大概的讲解一些verilog关键语法，希望能起到梳理作用
 
 # 计算机组成原理-Verilog
 
