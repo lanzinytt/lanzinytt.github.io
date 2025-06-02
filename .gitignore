@@ -11,3 +11,7 @@ node_modules
 .jekyll-cache
 */.DS_Store
 */*/.DS_Store
+.sass-cache/
+.jekyll-metadata
+vendor/
+Gemfile.lock
