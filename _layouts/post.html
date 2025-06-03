@@ -184,11 +184,16 @@ layout: default
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
-<!-- 添加Mermaid支持 -->
-<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<!-- Mermaid -->
+<script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
 <script>
-  mermaid.initialize({
-    startOnLoad: true,
-    theme: 'default'
-  });
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof mermaid !== 'undefined') {
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            securityLevel: 'loose'
+        });
+    }
+});
 </script>

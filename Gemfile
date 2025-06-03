@@ -13,3 +13,4 @@ gem "webrick", "~> 1.7"
 
 # Windows 平台支持
 gem "wdm", "~> 0.1", :platforms => [:mingw, :x64_mingw, :mswin]
+gem "csv"
