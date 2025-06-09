@@ -465,6 +465,9 @@ flowchart LR
         - **基数性质**：$$\mid A \times B\mid = \mid A \mid \times \mid B \mid$$
         - **不满足交换律**：一般情况下 $$A \times B \neq B \times A$$
         - **不满足结合律**：$$(A \times B) \times C \neq A \times (B \times C)$$
+        - **基数性质**： $|A \times B| = |A| \times |B|$
+        - **不满足交换律**：一般情况下 $A \times B \neq B \times A$
+        - **不满足结合律**：$(A \times B) \times C \neq A \times (B \times C)$
         - **对并运算的分配律**：
             - $$A \times (B \cup C) = (A \times B) \cup (A \times C)$$
             - $$(A \cup B) \times C = (A \times C) \cup (B \times C)$$
@@ -500,19 +503,28 @@ flowchart LR
             - 当$$A = B$$时，集合 $$I_A = \{\langle a, a \rangle \mid  a \in A\}$$ 称为A上的恒等关系
             - 记作：$$I_A$$或$$\Delta_A$$
             - 性质：$$aI_Ab$$当且仅当$$a = b$$
+            - 当 $ A = B $ 时，集合 $I_A = \{\langle a, a \rangle | a \in A\}$ 称为A上的恒等关系
+            - 记作：$I_A$或$\Delta_A$
+            - 性质：$aI_Ab$当且仅当$a = b$
             - 含义：只有相同的元素之间才有关系
             - 例如：若$$A = \{1, 2, 3\}$$，则$$I_A = \{\langle 1, 1 \rangle, \langle 2, 2 \rangle, \langle 3, 3 \rangle\}$$
 - 关系的表示方法
     - **集合表示法：列出所有序偶**
         - 直接列举关系中的所有有序对
         - 例如：设$$A = \{1, 2, 3\}$$，关系$$R = \{\langle 1, 2 \rangle, \langle 2, 3 \rangle, \langle 3, 1 \rangle\}$$
+        - 例如：设 $A = \{1, 2, 3\}$ ，关系 $R = \{\langle 1, 2 \rangle, \langle 2, 3 \rangle, \langle 3, 1 \rangle\}$
     - **关系矩阵：用0-1矩阵表示关系**
         - 设$$A = \{a_1, a_2, ..., a_m\}$$，$$B = \{b_1, b_2, ..., b_n\}$$
         - 关系矩阵$$M_R = (m_{ij})_{m \times n}$$，其中$$m_{ij} = 1$$当且仅当$$\langle a_i, b_j \rangle \in R$$
         - 例如：上述关系R的矩阵为$$\begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 0 & 0 \end{pmatrix}$$
+        - 设 $A = \{a_1, a_2, ..., a_m\}$ ，$B = \{b_1, b_2, ..., b_n\}$
+        - 关系矩阵 $M_R = (m_{ij})_{m \times n}$ ，其中 $m_{ij} = 1$ 当且仅当$\langle a_i, b_j \rangle \in R$
+        - 例如：上述关系R的矩阵为 $\begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 0 & 0 \end{pmatrix}$
         - **关系矩阵的布尔积运算**
             - **定义**：两个关系矩阵$$A = (a_{ij})_{m \times p}$$和$$B = (b_{jk})_{p \times n}$$的布尔积记作$$A \odot B$$
             - **计算公式**：$$(A \odot B)_{ik} = \bigvee_{j=1}^{p} (a_{ij} \land b_{jk})$$
+            - **定义**：两个关系矩阵 $A = (a_{ij})_{m \times p}$和$B = (b_{jk})_{p \times n}$ 的布尔积记作 $A \odot B$
+            - **计算公式**：$(A \odot B)_{ik} = \bigvee_{j=1}^{p} (a_{ij} \land b_{jk})$
             - **具体步骤**：
                 - 第i行第k列的元素 = (第i行与第k列对应元素相与)的析取
                 - 即：$$c_{ik} = (a_{i1} \land b_{1k}) \lor (a_{i2} \land b_{2k}) \lor ... \lor (a_{ip} \land b_{pk})$$
