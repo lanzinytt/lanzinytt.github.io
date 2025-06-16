@@ -135,14 +135,9 @@ tags:
         - **重要性质**：如果一个布尔等式成立，其对偶式也必然成立
         - 示例： $$ F_1=A+B·C $$ ， $$ F_2=(A+B)·(A+C) $$  ，有 $$ F_1^D=A·(B+C)=A·B+A·C=F_2^D $$ ，故 $$ F_1=F_2 $$  
     - **Expansion Rule** (Shannon's Expansion Theorem)
-        - **基本形式**：对于任意布尔函数  $$ F(x_1, x_2, \ldots, x_n) $$ ，可以按照变量  $$ x_i $$  进行展开：
-        
-         $$  $$ F(x_1, x_2, \ldots, x_n) = x_i \cdot F(x_1, \ldots, x_{i-1}, 1, x_{i+1}, \ldots, x_n) + \overline{x_i} \cdot F(x_1, \ldots, x_{i-1}, 0, x_{i+1}, \ldots, x_n) $$  $$ 
+        - **基本形式**：对于任意布尔函数  $$ F(x_1, x_2, \ldots, x_n) $$ ，可以按照变量  $$ x_i $$  进行展开：$$  F(x_1, x_2, \ldots, x_n) = x_i \cdot F(x_1, \ldots, x_{i-1}, 1, x_{i+1}, \ldots, x_n) + \overline{x_i} \cdot F(x_1, \ldots, x_{i-1}, 0, x_{i+1}, \ldots, x_n) $$ 
 
-        - **递归展开**：可以对多个变量连续展开
-        
-         $$  $$ F(A,B,C) = A \cdot F(1,B,C) + \overline{A} \cdot F(0,B,C) $$  $$ 
-         $$  $$ = A \cdot [B \cdot F(1,1,C) + \overline{B} \cdot F(1,0,C)] + \overline{A} \cdot [B \cdot F(0,1,C) + \overline{B} \cdot F(0,0,C)] $$  $$ 
+        - **递归展开**：可以对多个变量连续展开 $$ F(A,B,C) = A \cdot F(1,B,C) + \overline{A} \cdot F(0,B,C) $$ $$ = A \cdot [B \cdot F(1,1,C) + \overline{B} \cdot F(1,0,C)] + \overline{A} \cdot [B \cdot F(0,1,C) + \overline{B} \cdot F(0,0,C)]  $$ 
     - 异或同或
         - 异或与同或满足分配律和交换律
         - 异或与同或的零一律很特殊
@@ -196,18 +191,17 @@ tags:
         <details><summary> 解答过程</summary>
         
         - **Step 1: 化简原函数**
-        -  $$  $$ F(A,B,C) = \overline{(A\overline{B}+B\overline{C})\overline{AB}} \\ = \overline{(A\overline{B}+B\overline{C})} + \overline{\overline{AB}} \\ = \overline{(A\overline{B}+B\overline{C})} + AB \\ = \overline{A\overline{B}} \cdot \overline{B\overline{C}} + AB \\ = (\overline{A}+B) \cdot (\overline{B}+C) + AB
-             $$  $$ 
+        -  $$  F(A,B,C) = \overline{(A\overline{B}+B\overline{C})\overline{AB}} \\ = \overline{(A\overline{B}+B\overline{C})} + \overline{\overline{AB}} \\ = \overline{(A\overline{B}+B\overline{C})} + AB \\ = \overline{A\overline{B}} \cdot \overline{B\overline{C}} + AB \\ = (\overline{A}+B) \cdot (\overline{B}+C) + AB  $$ 
         - **Step 2: 展开分配律**
-         $$  $$ = \overline{A}\overline{B} + \overline{A}C + B\overline{B} + BC + AB  \\ = \overline{A}\overline{B} + \overline{A}C + BC + AB $$  $$ 
+         $$ = \overline{A}\overline{B} + \overline{A}C + B\overline{B} + BC + AB  \\ = \overline{A}\overline{B} + \overline{A}C + BC + AB $$ 
         - **Step 3: 补全变量（恢复缺失变量）**
          $$ \\ \overline{A}\overline{B} = \overline{A}\overline{B}(C + \overline{C}) = \overline{A}\overline{B}C + \overline{A}\overline{B}\overline{C} \\ \overline{A}C = \overline{A}C(B + \overline{B}) = \overline{A}BC + \overline{A}\overline{B}C \\ BC = BC(A + \overline{A}) = ABC + \overline{A}BC \\ AB = AB(C + \overline{C}) = ABC + AB\overline{C} $$ 
         - **Step 4: 合并同类项**
-         $$  $$ F = \overline{A}\overline{B}\overline{C} + \overline{A}\overline{B}C + \overline{A}BC + AB\overline{C} + ABC $$  $$ 
+         $$ F = \overline{A}\overline{B}\overline{C} + \overline{A}\overline{B}C + \overline{A}BC + AB\overline{C} + ABC $$ 
         - **Step 5: 识别最小项**
-         $$  \\ \overline{A}\overline{B}\overline{C} $$  →  $$ 000 $$  →  $$ m_0 \\ \overline{A}\overline{B}C $$  →  $$ 001 $$  →  $$ m_1 \\ \overline{A}BC $$  →  $$ 011 $$  →  $$ m_3 \\ AB\overline{C} $$  →  $$ 110 $$  →  $$ m_6 \\ ABC $$  →  $$ 111 $$  →  $$ m_7 $$ 
+         $$  \\ \overline{A}\overline{B}\overline{C} → 000  →   m_0 \\ \overline{A}\overline{B}C → 001 → m_1 \\ \overline{A}BC → 011 → m_3 \\ AB\overline{C} → 110 → m_6 \\ ABC → 111 → m_7
         - **最终答案**：
-         $$  $$ F = m_0 + m_1 + m_3 + m_6 + m_7 = \sum m(0,1,3,6,7) $$  $$ 
+         $$ F = m_0 + m_1 + m_3 + m_6 + m_7 = \sum m(0,1,3,6,7) $$ 
         
         </details>    
     </details>
@@ -280,241 +274,304 @@ tags:
                 - 圈4：m₁₁,m₁₅ →  $$ BCD $$ 
                 
             - **最终答案**：
-             $$  $$ F = \overline{C}\overline{D} + A\overline{B} + B\overline{A}\overline{C} + BCD $$  $$ 
+             $$F = \overline{C}\overline{D} + A\overline{B} + B\overline{A}\overline{C} + BCD $$ 
             
             </details>
         </details>
 
 ## Digital Circuit
-1. CMOS Transistor
-    <div style="display: flex; align-items: flex-start; gap: 20px;">
+1. CMOS Transistor    
+<div style="display: flex; align-items: flex-start; gap: 20px;">
     <div style="flex: 1;">
-    
-    - **NMOS晶体管 (N-channel Metal-Oxide-Semiconductor)**
-        - **结构组成**：包含gate(栅极)、source(源极)、drain(漏极)三个端子
-        - **工作原理**：通过栅极电压( $$ V_{gs} $$ )控制source-drain之间的电阻( $$ R_{ds} $$ )，起到逻辑控制开关的作用
-        - **开关特性**：
-            - 当 $$ V_{gs} = 0 $$ 时：NMOS晶体管处于**OFF**状态， $$ R_{ds} $$ 很大( $$ > 10^6Ω $$ )
-            - 当 $$ V_{gs} > 0 $$ (高电平)时：NMOS晶体管处于**ON**状态， $$ R_{ds} $$ 显著降低
-        - **控制规律**： $$ V_{gs} $$ 增大 →  $$ R_{ds} $$ 减小 (Not point in - 非反向导通)
-    
+        <ul>
+            <li><strong>NMOS晶体管 (N-channel Metal-Oxide-Semiconductor)</strong>
+                <ul>
+                    <li><strong>结构组成</strong>：包含gate(栅极)、source(源极)、drain(漏极)三个端子</li>
+                    <li><strong>工作原理</strong>：通过栅极电压( V<sub>gs</sub> )控制source-drain之间的电阻( R<sub>ds</sub> )，起到逻辑控制开关的作用</li>
+                    <li><strong>开关特性</strong>：
+                        <ul>
+                            <li>当 V<sub>gs</sub> = 0 时：NMOS晶体管处于<strong>OFF</strong>状态， R<sub>ds</sub> 很大( &gt; 10<sup>6</sup>Ω )</li>
+                            <li>当 V<sub>gs</sub> &gt; 0 (高电平)时：NMOS晶体管处于<strong>ON</strong>状态， R<sub>ds</sub> 显著降低</li>
+                        </ul>
+                    </li>
+                    <li><strong>控制规律</strong>： V<sub>gs</sub> 增大 → R<sub>ds</sub> 减小 (Not point in - 非反向导通)</li>
+                </ul>
+            </li>
+        </ul>
     </div>
     <div style="flex: 0 0 300px;">
-    
-    ![NMOS](/img/in-post/Digital_logic/NMOS_Transistor.png)
-    
+        <img class="shadow" src="/img/in-post/Digital_logic/NMOS_Transistor.png" width="260">
     </div>
-    </div>
-    
-    <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
+</div>
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
     <div style="flex: 1;">
-    
-    - **PMOS晶体管 (P-channel Metal-Oxide-Semiconductor)**
-        - **结构组成**：同样包含gate(栅极)、source(源极)、drain(漏极)三个端子
-        - **工作原理**：与NMOS相反，通过栅极电压( $$ V_{gs} $$ )反向控制source-drain之间的电阻
-        - **开关特性**：
-            - 当 $$ V_{gs} = 0 $$ 时：PMOS晶体管处于**OFF**状态， $$ R_{ds} $$ 很大
-            - 当 $$ V_{gs} < 0 $$ (低电平)时：PMOS晶体管处于**ON**状态， $$ R_{ds} $$ 显著降低
-        - **控制规律**： $$ V_{gs} $$ 减小 →  $$ R_{ds} $$ 减小 (Point in - 反向导通)
-    
+        <ul>
+            <li><strong>PMOS晶体管 (P-channel Metal-Oxide-Semiconductor)</strong>
+                <ul>
+                    <li><strong>结构组成</strong>：同样包含gate(栅极)、source(源极)、drain(漏极)三个端子</li>
+                    <li><strong>工作原理</strong>：与NMOS相反，通过栅极电压( V<sub>gs</sub> )反向控制source-drain之间的电阻</li>
+                    <li><strong>开关特性</strong>：
+                        <ul>
+                            <li>当 V<sub>gs</sub> = 0 时：PMOS晶体管处于<strong>OFF</strong>状态， R<sub>ds</sub> 很大</li>
+                            <li>当 V<sub>gs</sub> &lt; 0 (低电平)时：PMOS晶体管处于<strong>ON</strong>状态， R<sub>ds</sub> 显著降低</li>
+                        </ul>
+                    </li>
+                    <li><strong>控制规律</strong>： V<sub>gs</sub> 减小 → R<sub>ds</sub> 减小 (Point in - 反向导通)</li>
+                </ul>
+            </li>
+        </ul>
     </div>
     <div style="flex: 0 0 300px;">
-    
-    ![PMOS](/img/in-post/Digital_logic/PMOS_Transistor.png)
-    
+        <img class="shadow" src="/img/in-post/Digital_logic/PMOS_Transistor.png" width="260">
     </div>
-    </div>
+</div>
+
 - **CMOS技术优势**
     - **互补特性**：NMOS和PMOS的导通条件互补，可构成完整的逻辑门电路
     - **低功耗**：静态时总有一个晶体管处于截止状态，几乎无静态功耗
     - **高集成度**：晶体管可以做得很小，适合大规模集成电路
     - **逻辑完备性**：可以实现所有基本逻辑运算(AND, OR, NOT)
 
-2. CMOS Gate(这里只挑了典型来讲)
-    <div style="display: flex; align-items: flex-start; gap: 20px;">
+2. CMOS Gate(这里只挑了典型来讲)    
+<div style="display: flex; align-items: flex-start; gap: 20px;">
     <div style="flex: 1;">
-    
-    - **CMOS反相器 (CMOS Inverter)**
-        - **电路结构**：由一个PMOS晶体管和一个NMOS晶体管串联组成
-        - **工作原理**：
-            - 当输入A为低电平(0)时：PMOS导通，NMOS截止，输出Y为高电平(1)
-            - 当输入A为高电平(1)时：PMOS截止，NMOS导通，输出Y为低电平(0)
-        - **逻辑功能**： $$ Y = \overline{A} $$ 
-        - **特点**：结构简单，功耗低，是CMOS电路的基本单元，相当于**非门**的逻辑
-    
+        <ul>
+            <li><strong>CMOS反相器 (CMOS Inverter)</strong>
+                <ul>
+                    <li><strong>电路结构</strong>：由一个PMOS晶体管和一个NMOS晶体管串联组成</li>
+                    <li><strong>工作原理</strong>：
+                        <ul>
+                            <li>当输入A为低电平(0)时：PMOS导通，NMOS截止，输出Y为高电平(1)</li>
+                            <li>当输入A为高电平(1)时：PMOS截止，NMOS导通，输出Y为低电平(0)</li>
+                        </ul>
+                    </li>
+                    <li><strong>逻辑功能</strong>： Y = Ā </li>
+                    <li><strong>特点</strong>：结构简单，功耗低，是CMOS电路的基本单元，相当于<strong>非门</strong>的逻辑</li>
+                </ul>
+            </li>
+        </ul>
     </div>
     <div style="flex: 0 0 300px;">
-    
-    ![CMOS反相器](/img/in-post/Digital_logic/CMOS_Gate/CMOS_Inverter.png)
-    
+        <img class="shadow" src="/img/in-post/Digital_logic/CMOS_Gate/CMOS_Inverter.png" width="260">
     </div>
-    </div>
-
-    <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
+</div>    
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
     <div style="flex: 1;">
-    
-    - **CMOS与非门 (CMOS NAND Gate)**
-        - **电路结构**：由两个PMOS晶体管并联作为上拉网络，两个NMOS晶体管串联作为下拉网络
-        - **工作原理**：
-            - 当A=0或B=0时：至少有一个PMOS导通，两个NMOS至少有一个截止，输出Y为高电平(1)
-            - 当A=1且B=1时：两个PMOS都截止，两个NMOS都导通，输出Y为低电平(0)
-        - **逻辑功能**： $$ Y = \overline{A \cdot B} $$ 
-        - **特点**：NAND门是逻辑完备的，可以构造任何逻辑函数
-    
+        <ul>
+            <li><strong>CMOS与非门 (CMOS NAND Gate)</strong>
+                <ul>
+                    <li><strong>电路结构</strong>：由两个PMOS晶体管并联作为上拉网络，两个NMOS晶体管串联作为下拉网络</li>
+                    <li><strong>工作原理</strong>：
+                        <ul>
+                            <li>当A=0或B=0时：至少有一个PMOS导通，两个NMOS至少有一个截止，输出Y为高电平(1)</li>
+                            <li>当A=1且B=1时：两个PMOS都截止，两个NMOS都导通，输出Y为低电平(0)</li>
+                        </ul>
+                    </li>
+                    <li><strong>逻辑功能</strong>： Y = A·B 的非 </li>
+                    <li><strong>特点</strong>：NAND门是逻辑完备的，可以构造任何逻辑函数</li>
+                </ul>
+            </li>
+        </ul>
     </div>
     <div style="flex: 0 0 300px;">
-    
-    ![CMOS与非门](/img/in-post/Digital_logic/CMOS_Gate/CMOS_NAND_Gate.png)
-    
+        <img class="shadow" src="/img/in-post/Digital_logic/CMOS_Gate/CMOS_NAND_Gate.png" width="260">
     </div>
-    </div>
-
-    <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
+</div>   
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
     <div style="flex: 1;">
-    
-    - **CMOS缓冲器 (CMOS Buffer)**
-        - **电路结构**：由两个反相器级联组成，实现两次反相
-        - **工作原理**：
-            - 输入信号经过第一个反相器得到反相信号
-            - 反相信号再经过第二个反相器恢复为原信号
-        - **逻辑功能**： $$ Y = A $$ （同相输出）
-        - **特点**：
-            - 提供信号放大和驱动能力
-            - 增强信号的扇出能力
-            - 改善信号的上升/下降时间
-    
+        <ul>
+            <li><strong>CMOS缓冲器 (CMOS Buffer)</strong>
+                <ul>
+                    <li><strong>电路结构</strong>：由两个反相器级联组成，实现两次反相</li>
+                    <li><strong>工作原理</strong>：
+                        <ul>
+                            <li>输入信号经过第一个反相器得到反相信号</li>
+                            <li>反相信号再经过第二个反相器恢复为原信号</li>
+                        </ul>
+                    </li>
+                    <li><strong>逻辑功能</strong>： Y = A （同相输出）</li>
+                    <li><strong>特点</strong>：
+                        <ul>
+                            <li>提供信号放大和驱动能力</li>
+                            <li>增强信号的扇出能力</li>
+                            <li>改善信号的上升/下降时间</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
     <div style="flex: 0 0 300px;">
-    
-    ![CMOS缓冲器](/img/in-post/Digital_logic/CMOS_Gate/CMOS_Buffer.png)
-    
+        <img class="shadow" src="/img/in-post/Digital_logic/CMOS_Gate/CMOS_Buffer.png" width="260">
     </div>
-    </div>
-
-    <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
+</div>   
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
     <div style="flex: 1;">
-    
-    - **传输门 (Transmission Gate)**
-        - **电路结构**：由一个NMOS和一个PMOS并联组成，共享输入输出端
-        - **控制信号**：需要一对互补的控制信号C和 $$ \overline{C} $$ 
-        - **工作原理**：
-            - 当C=1， $$ \overline{C} $$ =0时：两个晶体管都导通，信号可以双向传输
-            - 当C=0， $$ \overline{C} $$ =1时：两个晶体管都截止，信号被阻断
-        - **逻辑功能**：可控制的双向开关
-        - **特点**：
-            - 双向传输特性
-            - 传输全电平范围的信号
-            - 常用于多路选择器和存储器
-    
+        <ul>
+            <li><strong>传输门 (Transmission Gate)</strong>
+                <ul>
+                    <li><strong>电路结构</strong>：由一个NMOS和一个PMOS并联组成，共享输入输出端</li>
+                    <li><strong>控制信号</strong>：需要一对互补的控制信号C和 C̄ </li>
+                    <li><strong>工作原理</strong>：
+                        <ul>
+                            <li>当C=1， C̄ =0时：两个晶体管都导通，信号可以双向传输</li>
+                            <li>当C=0， C̄ =1时：两个晶体管都截止，信号被阻断</li>
+                        </ul>
+                    </li>
+                    <li><strong>逻辑功能</strong>：可控制的双向开关</li>
+                    <li><strong>特点</strong>：
+                        <ul>
+                            <li>双向传输特性</li>
+                            <li>传输全电平范围的信号</li>
+                            <li>常用于多路选择器和存储器</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
     <div style="flex: 0 0 300px;">
-    
-    ![传输门](/img/in-post/Digital_logic/CMOS_Gate/Transmission_Gate.png)
-    
+        <img class="shadow" src="/img/in-post/Digital_logic/CMOS_Gate/Transmission_Gate.png" width="260">
     </div>
-    </div>
-
-    <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
+</div>    
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
     <div style="flex: 1;">
-    
-    - **三态缓冲器 (Three-state Buffer)**
-        - **电路结构**：在普通缓冲器基础上增加使能控制电路
-        - **三种输出状态**：
-            - 高电平(1)：当EN=1且A=1时
-            - 低电平(0)：当EN=1且A=0时
-            - 高阻态(Z)：当EN=0时，输出端相当于断开
-        - **工作原理**：
-            - 当使能信号EN=1时：电路工作为普通缓冲器
-            - 当使能信号EN=0时：输出进入高阻抗状态
-        - **应用场合**：
-            - 总线系统中的信号控制
-            - 多个输出共享同一条线路
-            - 需要输出隔离的场合
-    
+        <ul>
+            <li><strong>三态缓冲器 (Three-state Buffer)</strong>
+                <ul>
+                    <li><strong>电路结构</strong>：在普通缓冲器基础上增加使能控制电路</li>
+                    <li><strong>三种输出状态</strong>：
+                        <ul>
+                            <li>高电平(1)：当EN=1且A=1时</li>
+                            <li>低电平(0)：当EN=1且A=0时</li>
+                            <li>高阻态(Z)：当EN=0时，输出端相当于断开</li>
+                        </ul>
+                    </li>
+                    <li><strong>工作原理</strong>：
+                        <ul>
+                            <li>当使能信号EN=1时：电路工作为普通缓冲器</li>
+                            <li>当使能信号EN=0时：输出进入高阻抗状态</li>
+                        </ul>
+                    </li>
+                    <li><strong>应用场合</strong>：
+                        <ul>
+                            <li>总线系统中的信号控制</li>
+                            <li>多个输出共享同一条线路</li>
+                            <li>需要输出隔离的场合</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div style="flex: 0 0 300px;">    
+        <img class="shadow" src="/img/in-post/Digital_logic/CMOS_Gate/Three-state_Buffer.png" width="260">
+    </div>
+</div>    
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
+    <div style="flex: 1;">
+        <ul>
+            <li><strong>开漏输出电路 (Open-Drain Output Circuit)</strong>
+                <ul>
+                    <li><strong>电路结构</strong>：只有下拉NMOS晶体管，没有上拉PMOS晶体管的输出结构</li>
+                    <li><strong>工作原理</strong>：
+                        <ul>
+                            <li>当输入为高电平时：NMOS导通，输出被拉至低电平(0)</li>
+                            <li>当输入为低电平时：NMOS截止，输出呈现高阻态，需要外部上拉电阻提供高电平</li>
+                        </ul>
+                    </li>
+                    <li><strong>输出特性</strong>：
+                        <ul>
+                            <li>低电平：由NMOS晶体管提供强驱动能力</li>
+                            <li>高电平：由外部上拉电阻提供，驱动能力较弱</li>
+                        </ul>
+                    </li>
+                    <li><strong>应用优势</strong>：
+                        <ul>
+                            <li>可实现线与(Wired-AND)逻辑</li>
+                            <li>输出电压可以不同于电源电压</li>
+                            <li>多个输出可以并联连接</li>
+                            <li>适合总线应用和电平转换</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
     <div style="flex: 0 0 300px;">
-    
-    ![三态缓冲器](/img/in-post/Digital_logic/CMOS_Gate/Three-state_Buffer.png)
-    
+        <img class="shadow" src="/img/in-post/Digital_logic/Open-Drain_Output_Circuit.png" width="260">
     </div>
-    </div>
-    <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
+</div>    
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
     <div style="flex: 1;">
-    
-    - **开漏输出电路 (Open-Drain Output Circuit)**
-        - **电路结构**：只有下拉NMOS晶体管，没有上拉PMOS晶体管的输出结构
-        - **工作原理**：
-            - 当输入为高电平时：NMOS导通，输出被拉至低电平(0)
-            - 当输入为低电平时：NMOS截止，输出呈现高阻态，需要外部上拉电阻提供高电平
-        - **输出特性**：
-            - 低电平：由NMOS晶体管提供强驱动能力
-            - 高电平：由外部上拉电阻提供，驱动能力较弱
-        - **应用优势**：
-            - 可实现线与(Wired-AND)逻辑
-            - 输出电压可以不同于电源电压
-            - 多个输出可以并联连接
-            - 适合总线应用和电平转换
-    
+        <ul>
+            <li><strong>线逻辑 (Wired Logic)</strong>
+                <ul>
+                    <li><strong>基本概念</strong>：通过直接连接多个门电路的输出端来实现逻辑运算</li>
+                    <li><strong>线与逻辑 (Wired-AND)</strong>：
+                        <ul>
+                            <li>多个开漏输出并联连接，配合上拉电阻</li>
+                            <li>只有当所有输出都为高阻态时，总输出才为高电平</li>
+                            <li>任何一个输出为低电平时，总输出就为低电平</li>
+                        </ul>
+                    </li>
+                    <li><strong>逻辑关系</strong>： Y = A₁ · A₂ · A₃ · ... · Aₙ </li>
+                    <li><strong>应用场合</strong>：
+                        <ul>
+                            <li>总线仲裁电路</li>
+                            <li>多设备共享信号线</li>
+                            <li>中断请求信号汇总</li>
+                            <li>降低连接复杂度</li>
+                        </ul>
+                    </li>
+                    <li><strong>注意事项</strong>：
+                        <ul>
+                            <li>只能用于开漏或集电极开路输出</li>
+                            <li>需要合适的上拉电阻值</li>
+                            <li>会增加信号延迟</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
     <div style="flex: 0 0 300px;">
-    
-    ![开漏输出电路](/img/in-post/Digital_logic/Open-Drain_Output_Circuit.png)
-    
+        <img class="shadow" src="/img/in-post/Digital_logic/Wired_Logic.png" width="260">
     </div>
-    </div>
-
-    <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
+</div>
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
     <div style="flex: 1;">
     
-    - **线逻辑 (Wired Logic)**
-        - **基本概念**：通过直接连接多个门电路的输出端来实现逻辑运算
-        - **线与逻辑 (Wired-AND)**：
-            - 多个开漏输出并联连接，配合上拉电阻
-            - 只有当所有输出都为高阻态时，总输出才为高电平
-            - 任何一个输出为低电平时，总输出就为低电平
-        - **逻辑关系**： $$ Y = A_1 \cdot A_2 \cdot A_3 \cdot ... \cdot A_n $$ 
-        - **应用场合**：
-            - 总线仲裁电路
-            - 多设备共享信号线
-            - 中断请求信号汇总
-            - 降低连接复杂度
-        - **注意事项**：
-            - 只能用于开漏或集电极开路输出
-            - 需要合适的上拉电阻值
-            - 会增加信号延迟
+    <ul>
+        <li><strong>CMOS电路的未使用输入端处理 (Unused Inputs of CMOS Circuit)</strong>
+            <ul>
+                <li><strong>问题描述</strong>：CMOS门电路的输入端如果悬空，会导致不确定的逻辑状态</li>
+                <li><strong>悬空输入的危害</strong>：
+                    <ul>
+                        <li>输入电平不确定，可能在逻辑阈值附近浮动</li>
+                        <li>造成输出状态不稳定</li>
+                        <li>增加功耗（两个晶体管可能同时部分导通）</li>
+                        <li>产生振荡或噪声敏感</li>
+                    </ul>
+                </li>
+                <li><strong>正确处理方法</strong>：
+                    <ul>
+                        <li><strong>接高电平</strong>：通过电阻连接到VDD（适用于不影响逻辑的输入）</li>
+                        <li><strong>接低电平</strong>：通过电阻连接到GND（适用于不影响逻辑的输入）</li>
+                        <li><strong>与其他输入并联</strong>：连接到已使用的输入端</li>
+                    </ul>
+                </li>
+                <li><strong>电阻选择</strong>：通常使用10kΩ-100kΩ的上拉或下拉电阻</li>
+                <li><strong>设计原则</strong>：确保未使用输入不会改变电路的预期逻辑功能</li>
+            </ul>
+        </li>
+    </ul>
     
     </div>
-    <div style="flex: 0 0 300px;">
-    
-    ![线逻辑](/img/in-post/Digital_logic/Wired_Logic.png)
-    
+    <div style="flex: 0 0 300px;"> 
+    <img class="shadow" src="/img/in-post/Digital_logic/Unused_inputs_of_CMOS_circuit.png" width="260">
     </div>
-    </div>
-
-    <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
-    <div style="flex: 1;">
-    
-    - **CMOS电路的未使用输入端处理 (Unused Inputs of CMOS Circuit)**
-        - **问题描述**：CMOS门电路的输入端如果悬空，会导致不确定的逻辑状态
-        - **悬空输入的危害**：
-            - 输入电平不确定，可能在逻辑阈值附近浮动
-            - 造成输出状态不稳定
-            - 增加功耗（两个晶体管可能同时部分导通）
-            - 产生振荡或噪声敏感
-        - **正确处理方法**：
-            - **接高电平**：通过电阻连接到VDD（适用于不影响逻辑的输入）
-            - **接低电平**：通过电阻连接到GND（适用于不影响逻辑的输入）
-            - **与其他输入并联**：连接到已使用的输入端
-        - **电阻选择**：通常使用10kΩ-100kΩ的上拉或下拉电阻
-        - **设计原则**：确保未使用输入不会改变电路的预期逻辑功能
-    
-    </div>
-    <div style="flex: 0 0 300px;">
-    
-    ![CMOS未使用输入端](/img/in-post/Digital_logic/Unused_inputs_of_CMOS_circuit.png)
-    
-    </div>
-    </div>
+</div>
 
 3. Electrical Characteristics
     
@@ -537,7 +594,7 @@ tags:
             - **输入负载特性**：被驱动门电路的输入电流需求
             - **电压电平要求**：保证逻辑电平的有效性
         - **计算公式**：
-             $$  $$ \text{扇出} = \min\left(\frac{I_{OL(max)}}{I_{IL(max)}}, \frac{I_{OH(max)}}{I_{IH(max)}}\right) $$  $$ 
+             $$ \text{扇出} = \min\left(\frac{I_{OL(max)}}{I_{IL(max)}}, \frac{I_{OH(max)}}{I_{IH(max)}}\right) $$ 
             -  $$ I_{OL} $$ ：输出低电平时的灌电流能力
             -  $$ I_{OH} $$ ：输出高电平时的拉电流能力  
             -  $$ I_{IL} $$ ：输入低电平时的漏电流
@@ -564,21 +621,58 @@ tags:
             - 驱动能力满足：扇出计算结果 ≥ 实际负载数量
 
     - **74HCT驱动74LS的实例分析**
-        
-        <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 10px;">
+          
         <div style="flex: 1;">
         
-        **电路特性参数**：
+        <strong>电路特性参数</strong>：
         
-        | 器件类型 |  $$ V_{OH(min)} $$  |  $$ V_{OL(max)} $$  |  $$ I_{OH(max)} $$  |  $$ I_{OL(max)} $$  |
-        |:--------:|:-------------:|:-------------:|:-------------:|:-------------:|
-        | 74HCT | 4.4V | 0.1V | 4mA | 4mA |
-        | 74LS | 2.4V | 0.5V | - | - |
+        <table>
+        <tr>
+        <th>器件类型</th>
+        <th>V<sub>OH(min)</sub></th>
+        <th>V<sub>OL(max)</sub></th>
+        <th>I<sub>OH(max)</sub></th>
+        <th>I<sub>OL(max)</sub></th>
+        </tr>
+        <tr>
+        <td>74HCT</td>
+        <td>4.4V</td>
+        <td>0.1V</td>
+        <td>4mA</td>
+        <td>4mA</td>
+        </tr>
+        <tr>
+        <td>74LS</td>
+        <td>2.4V</td>
+        <td>0.5V</td>
+        <td>-</td>
+        <td>-</td>
+        </tr>
+        </table>
         
-        | 器件类型 |  $$ V_{IH(min)} $$  |  $$ V_{IL(max)} $$  |  $$ I_{IH(max)} $$  |  $$ I_{IL(max)} $$  |
-        |:--------:|:-------------:|:-------------:|:-------------:|:-------------:|
-        | 74HCT | 2.0V | 0.8V | 1µA | 1µA |
-        | 74LS | 2.0V | 0.8V | 20µA | 0.4mA |
+        <table>
+        <tr>
+        <th>器件类型</th>
+        <th>V<sub>IH(min)</sub></th>
+        <th>V<sub>IL(max)</sub></th>
+        <th>I<sub>IH(max)</sub></th>
+        <th>I<sub>IL(max)</sub></th>
+        </tr>
+        <tr>
+        <td>74HCT</td>
+        <td>2.0V</td>
+        <td>0.8V</td>
+        <td>1µA</td>
+        <td>1µA</td>
+        </tr>
+        <tr>
+        <td>74LS</td>
+        <td>2.0V</td>
+        <td>0.8V</td>
+        <td>20µA</td>
+        <td>0.4mA</td>
+        </tr>
+        </table>
         
         </div>
         </div>
@@ -599,21 +693,28 @@ tags:
         - **布线考虑**：多个负载需要考虑传输线效应和信号延迟
         - **噪声容限**：负载增加会降低系统的抗噪声能力
     - **直流噪声容限 (Direct Current Noise Margin)**
-        
-        <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 10px;">
+          
         <div style="flex: 1;">
         
-        - **定义**：数字电路在直流条件下能够容忍的噪声干扰的最大幅度，是衡量电路抗干扰能力的重要指标
-        
-        - **计算公式**：
-            - **低电平噪声容限**： $$ NM_L = V_{IL(max)} - V_{OL(max)} $$ 
-            - **高电平噪声容限**： $$ NM_H = V_{OH(min)} - V_{IH(min)} $$ 
-            - **总噪声容限**： $$ NM = \min(NM_L, NM_H) $$ 
-        
-        - **物理意义**：
-            -  $$ NM_L $$ ：在低电平状态下，输入端能承受的最大正向噪声幅度
-            -  $$ NM_H $$ ：在高电平状态下，输入端能承受的最大负向噪声幅度
-            - 噪声容限越大，电路的抗干扰能力越强
+        <ul>
+            <li><strong>定义</strong>：数字电路在直流条件下能够容忍的噪声干扰的最大幅度，是衡量电路抗干扰能力的重要指标</li>
+            
+            <li><strong>计算公式</strong>：
+                <ul>
+                    <li><strong>低电平噪声容限</strong>： NM<sub>L</sub> = V<sub>IL(max)</sub> - V<sub>OL(max)</sub> </li>
+                    <li><strong>高电平噪声容限</strong>： NM<sub>H</sub> = V<sub>OH(min)</sub> - V<sub>IH(min)</sub> </li>
+                    <li><strong>总噪声容限</strong>： NM = min(NM<sub>L</sub>, NM<sub>H</sub>) </li>
+                </ul>
+            </li>
+            
+            <li><strong>物理意义</strong>：
+                <ul>
+                    <li>NM<sub>L</sub> ：在低电平状态下，输入端能承受的最大正向噪声幅度</li>
+                    <li>NM<sub>H</sub> ：在高电平状态下，输入端能承受的最大负向噪声幅度</li>
+                    <li>噪声容限越大，电路的抗干扰能力越强</li>
+                </ul>
+            </li>
+        </ul>
         
         </div>
         </div>
@@ -626,7 +727,7 @@ tags:
         | **TTL** | 0.8V | 0.5V | **0.3V** | 2.7V | 2.0V | **0.7V** | **0.3V** |
         
         - **计算**
-        ![alt text](../../img/in-post/Digital_logic/Direct_Current_Noise_Margin.png)
+        <img class="shadow" src="/img/in-post/Digital_logic/Direct_Current_Noise_Margin.png" width="260">
 
 ## Combination
 ## Combination
@@ -1075,35 +1176,44 @@ tags:
 
 2. R-S Flip-Flop
     
-    **基本R-S触发器 (Basic R-S Latch)**
-    
-    <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 10px;">
+- **基本R-S触发器 (Basic R-S Latch)**
+ <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">     
     <div style="flex: 1;">
-    
-    - **电路结构**：由两个交叉耦合的NOR门或NAND门构成
-    - **输入端**：
-        - R (Reset)：复位输入，用于将输出置0
-        - S (Set)：置位输入，用于将输出置1
-    - **输出端**：
-        - Q：正输出
-        -  $$ \overline{Q} $$ ：反输出（通常与Q互补）
-    - **工作原理**：
-        - 利用正反馈实现双稳态特性
-        - 当一个输出为1时，会维持另一个输出为0
-    - **特点**：
-        - 最基本的存储单元
-        - 异步工作，立即响应输入变化
-        - 存在禁止状态
-    
+        <ul>
+            <li><strong>电路结构</strong>：由两个交叉耦合的NOR门或NAND门构成</li>
+            <li><strong>输入端</strong>：
+                <ul>
+                    <li>R (Reset)：复位输入，用于将输出置0</li>
+                    <li>S (Set)：置位输入，用于将输出置1</li>
+                </ul>
+            </li>
+            <li><strong>输出端</strong>：
+                <ul>
+                    <li>Q：正输出</li>
+                    <li>Q̄ ：反输出（通常与Q互补）</li>
+                </ul>
+            </li>
+            <li><strong>工作原理</strong>：
+                <ul>
+                    <li>利用正反馈实现双稳态特性</li>
+                    <li>当一个输出为1时，会维持另一个输出为0</li>
+                </ul>
+            </li>
+            <li><strong>特点</strong>：
+                <ul>
+                    <li>最基本的存储单元</li>
+                    <li>异步工作，立即响应输入变化</li>
+                    <li>存在禁止状态</li>
+                </ul>
+            </li>
+        </ul>
     </div>
     <div style="flex: 0 0 300px;">
-    
-    ![基本R-S触发器](../../img/in-post/Digital_logic/Flip_Flop/Basic_R-S_Flip-Flop.png)
-    
+        <img class="shadow" src="/img/in-post/Digital_logic/Flip_Flop/Basic_R-S_Flip-Flop.png" width="260">
     </div>
-    </div>
-    
-    **基本R-S触发器真值表（NOR门实现）**：
+</div>
+
+- **基本R-S触发器真值表（NOR门实现）**：
     
     | R | S |  $$ Q_{n+1} $$  |  $$ \overline{Q_{n+1}} $$  | 说明 |
     |:-:|:-:|:---------:|:-------------------:|:----:|
@@ -1112,35 +1222,44 @@ tags:
     | 1 | 0 | 0 | 1 | 复位(Reset) |
     | 1 | 1 | 0 | 0 | **禁止状态** |
     
-    **门控R-S锁存器 (Gated R-S Latch)**
-    
-    <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 10px;">
+- **门控R-S锁存器 (Gated R-S Latch)**
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">    
     <div style="flex: 1;">
-    
-    - **改进设计**：在基本R-S触发器基础上增加时钟控制
-    - **输入端**：
-        - R, S：数据输入端
-        - CLK (Clock)：时钟控制信号
-    - **工作原理**：
-        - 只有当CLK=1时，R和S信号才能影响输出
-        - 当CLK=0时，触发器保持当前状态
-    - **优势**：
-        - 提供时钟同步控制
-        - 避免异步变化带来的干扰
-        - 为同步时序电路奠定基础
-    - **应用**：
-        - 需要同步控制的存储电路
-        - 作为其他复杂触发器的基础单元
-    
+        <ul>
+            <li><strong>改进设计</strong>：在基本R-S触发器基础上增加时钟控制</li>
+            <li><strong>输入端</strong>：
+                <ul>
+                    <li>R, S：数据输入端</li>
+                    <li>CLK (Clock)：时钟控制信号</li>
+                </ul>
+            </li>
+            <li><strong>工作原理</strong>：
+                <ul>
+                    <li>只有当CLK=1时，R和S信号才能影响输出</li>
+                    <li>当CLK=0时，触发器保持当前状态</li>
+                </ul>
+            </li>
+            <li><strong>优势</strong>：
+                <ul>
+                    <li>提供时钟同步控制</li>
+                    <li>避免异步变化带来的干扰</li>
+                    <li>为同步时序电路奠定基础</li>
+                </ul>
+            </li>
+            <li><strong>应用</strong>：
+                <ul>
+                    <li>需要同步控制的存储电路</li>
+                    <li>作为其他复杂触发器的基础单元</li>
+                </ul>
+            </li>
+        </ul>
     </div>
     <div style="flex: 0 0 300px;">
-    
-    ![门控R-S锁存器](../../img/in-post/Digital_logic/Flip_Flop/Gated(Clocked)_R-S_Latch.png)
-    
+        <img class="shadow" src="/img/in-post/Digital_logic/Flip_Flop/Gated(Clocked)_R-S_Latch.png" width="260">
     </div>
-    </div>
+</div>
     
-    **门控R-S锁存器真值表**：
+- **门控R-S锁存器真值表**：
     
     | CLK | R | S |  $$ Q_{n+1} $$  | 说明 |
     |:---:|:-:|:-:|:---------:|:----:|
@@ -1150,35 +1269,44 @@ tags:
     | 1 | 1 | 0 | 0 | 复位 |
     | 1 | 1 | 1 | ? | 禁止状态 |
     
-    **主从R-S触发器 (Master-Slave R-S Flip-Flop)**
-    
-    <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 10px;">
+- **主从R-S触发器 (Master-Slave R-S Flip-Flop)**
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;"> 
     <div style="flex: 1;">
-    
-    - **结构组成**：由两级门控R-S锁存器串联构成
-        - 主锁存器(Master)：接收输入信号
-        - 从锁存器(Slave)：控制最终输出
-    - **时钟控制**：
-        - 主锁存器在CLK=1时工作
-        - 从锁存器在CLK=0时工作
-    - **工作过程**：
-        - 上升沿：数据进入主锁存器
-        - 高电平期间：主锁存器可能多次变化
-        - 下降沿：主锁存器状态传递给从锁存器
-    - **特点**：
-        - 在时钟下降沿改变输出状态
-        - 避免了电平触发的空翻问题
-        - 输出变化与输入变化在时间上分离
-    
+        <ul>
+            <li><strong>结构组成</strong>：由两级门控R-S锁存器串联构成
+                <ul>
+                    <li>主锁存器(Master)：接收输入信号</li>
+                    <li>从锁存器(Slave)：控制最终输出</li>
+                </ul>
+            </li>
+            <li><strong>时钟控制</strong>：
+                <ul>
+                    <li>主锁存器在CLK=1时工作</li>
+                    <li>从锁存器在CLK=0时工作</li>
+                </ul>
+            </li>
+            <li><strong>工作过程</strong>：
+                <ul>
+                    <li>上升沿：数据进入主锁存器</li>
+                    <li>高电平期间：主锁存器可能多次变化</li>
+                    <li>下降沿：主锁存器状态传递给从锁存器</li>
+                </ul>
+            </li>
+            <li><strong>特点</strong>：
+                <ul>
+                    <li>在时钟下降沿改变输出状态</li>
+                    <li>避免了电平触发的空翻问题</li>
+                    <li>输出变化与输入变化在时间上分离</li>
+                </ul>
+            </li>
+        </ul>
     </div>
     <div style="flex: 0 0 300px;">
-    
-    ![主从R-S触发器](../../img/in-post/Digital_logic/Flip_Flop/Master_Slave_R-S_Flip_Flop.png)
-    
+        <img class="shadow" src="/img/in-post/Digital_logic/Flip_Flop/Master_Slave_R-S_Flip_Flop.png" width="260">
     </div>
-    </div>
+</div>
     
-    **主从R-S触发器工作时序**：
+- **主从R-S触发器工作时序**：
     
     | 时钟状态 | 主锁存器 | 从锁存器 | 输出Q |
     |:--------:|:--------:|:--------:|:-----:|
@@ -1189,37 +1317,47 @@ tags:
 
 3. D Flip-Flop
     
-    **门控D锁存器 (Gated D Latch)**
+- **门控D锁存器 (Gated D Latch)**
     
-    <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 10px;">
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">  
     <div style="flex: 1;">
-    
-    - **设计思想**：为解决R-S触发器的禁止状态问题而设计
-    - **电路结构**：在门控R-S锁存器的R输入端增加反相器
-    - **输入端**：
-        - D (Data)：数据输入端
-        - CLK：时钟控制信号
-    - **内部连接**：
-        - S = D
-        - R =  $$ \overline{D} $$ 
-    - **功能特点**：
-        - 无禁止状态，任何时候R和S不会同时为1
-        - 输出跟随输入：Q = D（当CLK=1时）
-        - 简化了控制逻辑
-    - **应用优势**：
-        - 数据寄存器的基本单元
-        - 流水线系统中的数据缓存
-        - 同步数据传输
-    
+      <ul>
+        <li><strong>设计思想</strong>：为解决R-S触发器的禁止状态问题而设计</li>
+        <li><strong>电路结构</strong>：在门控R-S锁存器的R输入端增加反相器</li>
+        <li><strong>输入端</strong>：
+            <ul>
+                <li>D (Data)：数据输入端</li>
+                <li>CLK：时钟控制信号</li>
+            </ul>
+        </li>
+        <li><strong>内部连接</strong>：
+            <ul>
+                <li>S = D</li>
+                <li>R = D̄ </li>
+            </ul>
+        </li>
+        <li><strong>功能特点</strong>：
+            <ul>
+                <li>无禁止状态，任何时候R和S不会同时为1</li>
+                <li>输出跟随输入：Q = D（当CLK=1时）</li>
+                <li>简化了控制逻辑</li>
+            </ul>
+        </li>
+        <li><strong>应用优势</strong>：
+            <ul>
+                <li>数据寄存器的基本单元</li>
+                <li>流水线系统中的数据缓存</li>
+                <li>同步数据传输</li>
+            </ul>
+        </li>
+    </ul>
     </div>
     <div style="flex: 0 0 300px;">
-    
-    ![门控D锁存器](../../img/in-post/Digital_logic/Flip_Flop/Gated_D_Latch.png)
-    
+        <img class="shadow" src="/img/in-post/Digital_logic/Flip_Flop/Gated_D_Latch.png" width="260">
     </div>
-    </div>
+</div>
     
-    **门控D锁存器真值表**：
+- **门控D锁存器真值表**：
     
     | CLK | D |  $$ Q_{n+1} $$  | 说明 |
     |:---:|:-:|:---------:|:----:|
@@ -1227,38 +1365,48 @@ tags:
     | 1 | 0 | 0 | 输出跟随输入 |
     | 1 | 1 | 1 | 输出跟随输入 |
     
-    **上升沿触发D触发器 (Rising-edge Triggered D Flip-Flop)**
+- **上升沿触发D触发器 (Rising-edge Triggered D Flip-Flop)**
     
-    <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 10px;">
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">  
     <div style="flex: 1;">
-    
-    - **触发方式**：在时钟上升沿瞬间改变输出状态
-    - **电路实现**：
-        - 方法1：主从结构 + 边沿检测电路
-        - 方法2：传输门结构
-        - 方法3：CMOS开关电路
-    - **工作特点**：
-        - 只在CLK上升沿响应D输入
-        - 其他时间输出保持不变
-        - 避免了透明锁存器的竞争冒险
-    - **时序参数**：
-        - 建立时间(Setup Time)：CLK边沿前D必须稳定的时间
-        - 保持时间(Hold Time)：CLK边沿后D必须保持的时间
-        - 传播延迟(Propagation Delay)：从CLK边沿到Q变化的时间
-    - **设计优势**：
-        - 时序控制精确
-        - 抗干扰能力强
-        - 便于级联使用
-    
+      <ul>
+        <li><strong>触发方式</strong>：在时钟上升沿瞬间改变输出状态</li>
+        <li><strong>电路实现</strong>：
+            <ul>
+                <li>方法1：主从结构 + 边沿检测电路</li>
+                <li>方法2：传输门结构</li>
+                <li>方法3：CMOS开关电路</li>
+            </ul>
+        </li>
+        <li><strong>工作特点</strong>：
+            <ul>
+                <li>只在CLK上升沿响应D输入</li>
+                <li>其他时间输出保持不变</li>
+                <li>避免了透明锁存器的竞争冒险</li>
+            </ul>
+        </li>
+        <li><strong>时序参数</strong>：
+            <ul>
+                <li>建立时间(Setup Time)：CLK边沿前D必须稳定的时间</li>
+                <li>保持时间(Hold Time)：CLK边沿后D必须保持的时间</li>
+                <li>传播延迟(Propagation Delay)：从CLK边沿到Q变化的时间</li>
+            </ul>
+        </li>
+        <li><strong>设计优势</strong>：
+            <ul>
+                <li>时序控制精确</li>
+                <li>抗干扰能力强</li>
+                <li>便于级联使用</li>
+            </ul>
+        </li>
+    </ul>
     </div>
     <div style="flex: 0 0 300px;">
-    
-    ![上升沿触发D触发器](../../img/in-post/Digital_logic/Flip_Flop/Rising-edge_triggered_D_Flip-Flop.png)
-    
+        <img class="shadow" src="/img/in-post/Digital_logic/Flip_Flop/Rising-edge_triggered_D_Flip-Flop.png" width="260">
     </div>
-    </div>
+</div>
     
-    **边沿触发D触发器特性表**：
+- **边沿触发D触发器特性表**：
     
     | CLK | D |  $$ Q_{n+1} $$  | 说明 |
     |:---:|:-:|:---------:|:----:|
@@ -1267,36 +1415,45 @@ tags:
     | 0,1,↓ | X |  $$ Q_n $$  | 非上升沿时保持 |
 
 4. J-K Flip-Flop
+- **门控J-K锁存器 (Gated J-K Latch)**
     
-    **门控J-K锁存器 (Gated J-K Latch)**
-    
-    <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 10px;">
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">  
     <div style="flex: 1;">
-    
-    - **设计改进**：在门控R-S锁存器基础上解决禁止状态问题
-    - **输入端**：
-        - J (Jump)：类似于S输入，置位功能
-        - K (Kill)：类似于R输入，复位功能
-        - CLK：时钟控制信号
-    - **反馈连接**：
-        - J输入端增加 $$ \overline{Q} $$ 反馈
-        - K输入端增加Q反馈
-    - **功能特点**：
-        - J=K=1时实现翻转功能，无禁止状态
-        - 具有R-S触发器的所有功能
-        - 增加了翻转（Toggle）功能
-    - **逻辑方程**：
-        -  $$ Q_{n+1} = J\overline{Q_n} + \overline{K}Q_n $$ 
-    
+      <ul>
+        <li><strong>设计改进</strong>：在门控R-S锁存器基础上解决禁止状态问题</li>
+        <li><strong>输入端</strong>：
+            <ul>
+                <li>J (Jump)：类似于S输入，置位功能</li>
+                <li>K (Kill)：类似于R输入，复位功能</li>
+                <li>CLK：时钟控制信号</li>
+            </ul>
+        </li>
+        <li><strong>反馈连接</strong>：
+            <ul>
+                <li>J输入端增加 Q̄ 反馈</li>
+                <li>K输入端增加Q反馈</li>
+            </ul>
+        </li>
+        <li><strong>功能特点</strong>：
+            <ul>
+                <li>J=K=1时实现翻转功能，无禁止状态</li>
+                <li>具有R-S触发器的所有功能</li>
+                <li>增加了翻转（Toggle）功能</li>
+            </ul>
+        </li>
+        <li><strong>逻辑方程</strong>：
+            <ul>
+                <li>Q<sub>n+1</sub> = JQ̄<sub>n</sub> + K̄Q<sub>n</sub> </li>
+            </ul>
+        </li>
+    </ul>
     </div>
     <div style="flex: 0 0 300px;">
-    
-    ![门控J-K锁存器](../../img/in-post/Digital_logic/Flip_Flop/Gated_J-K_Latch.png)
-    
+        <img class="shadow" src="/img/in-post/Digital_logic/Flip_Flop/Gated_J-K_Latch.png" width="260">
     </div>
-    </div>
+</div>
     
-    **J-K锁存器真值表**：
+- **J-K锁存器真值表**：
     
     | CLK | J | K |  $$ Q_{n+1} $$  | 说明 |
     |:---:|:-:|:-:|:---------:|:----:|
@@ -1305,66 +1462,85 @@ tags:
     | 1 | 0 | 1 | 0 | 复位 |
     | 1 | 1 | 0 | 1 | 置位 |
     | 1 | 1 | 1 |  $$ \overline{Q_n} $$  | 翻转 |
-    
-    **主从J-K触发器 (Master-Slave J-K Flip-Flop)**
-    
-    <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 10px;">
+- **主从J-K触发器 (Master-Slave J-K Flip-Flop)**
+      
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">  
     <div style="flex: 1;">
-    
-    - **结构特点**：采用主从结构避免空翻现象
-    - **工作原理**：
-        - 主级在CLK=1时接收J、K输入
-        - 从级在CLK=0时接收主级输出
-        - 在CLK下降沿改变最终输出
-    - **解决问题**：
-        - 消除了门控J-K锁存器的空翻问题
-        - 提供稳定的翻转功能
-        - 实现可预测的时序行为
-    - **应用领域**：
-        - 计数器设计
-        - 频率分频电路
-        - 状态机实现
-    - **设计考虑**：
-        - 1s捕获问题：CLK=1期间输入变化会影响结果
-        - 需要严格的时序设计
-    
+    <ul>
+        <li><strong>结构特点</strong>：采用主从结构避免空翻现象</li>
+        <li><strong>工作原理</strong>：
+            <ul>
+                <li>主级在CLK=1时接收J、K输入</li>
+                <li>从级在CLK=0时接收主级输出</li>
+                <li>在CLK下降沿改变最终输出</li>
+            </ul>
+        </li>
+        <li><strong>解决问题</strong>：
+            <ul>
+                <li>消除了门控J-K锁存器的空翻问题</li>
+                <li>提供稳定的翻转功能</li>
+                <li>实现可预测的时序行为</li>
+            </ul>
+        </li>
+        <li><strong>应用领域</strong>：
+            <ul>
+                <li>计数器设计</li>
+                <li>频率分频电路</li>
+                <li>状态机实现</li>
+            </ul>
+        </li>
+        <li><strong>设计考虑</strong>：
+            <ul>
+                <li>1s捕获问题：CLK=1期间输入变化会影响结果</li>
+                <li>需要严格的时序设计</li>
+            </ul>
+        </li>
+    </ul>
     </div>
     <div style="flex: 0 0 300px;">
-    
-    ![主从J-K触发器](../../img/in-post/Digital_logic/Flip_Flop/Master_Slave_J-K_Flip-Flop.png)
-    
+        <img class="shadow" src="/img/in-post/Digital_logic/Flip_Flop/Master_Slave_J-K_Flip-Flop.png" width="260">
     </div>
-    </div>
+</div>
+
+- **边沿触发J-K触发器 (Edge-Triggered J-K Flip-Flop)**
     
-    **边沿触发J-K触发器 (Edge-Triggered J-K Flip-Flop)**
-    
-    <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 10px;">
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">  
     <div style="flex: 1;">
-    
-    - **触发方式**：在时钟边沿瞬间采样J、K输入
-    - **优势特点**：
-        - 只在时钟边沿响应输入变化
-        - 避免了主从触发器的1s捕获问题
-        - 具有更好的抗干扰特性
-    - **时序要求**：
-        - 建立时间：边沿前输入必须稳定
-        - 保持时间：边沿后输入必须保持
-    - **功能完整性**：
-        - 保持、置位、复位、翻转四种功能
-        - 是最通用的触发器类型
-    - **现代应用**：
-        - 高速数字系统首选
-        - 同步电路设计标准
-    
+      <ul>
+        <li><strong>触发方式</strong>：在时钟边沿瞬间采样J、K输入</li>
+        <li><strong>优势特点</strong>：
+            <ul>
+                <li>只在时钟边沿响应输入变化</li>
+                <li>避免了主从触发器的1s捕获问题</li>
+                <li>具有更好的抗干扰特性</li>
+            </ul>
+        </li>
+        <li><strong>时序要求</strong>：
+            <ul>
+                <li>建立时间：边沿前输入必须稳定</li>
+                <li>保持时间：边沿后输入必须保持</li>
+            </ul>
+        </li>
+        <li><strong>功能完整性</strong>：
+            <ul>
+                <li>保持、置位、复位、翻转四种功能</li>
+                <li>是最通用的触发器类型</li>
+            </ul>
+        </li>
+        <li><strong>现代应用</strong>：
+            <ul>
+                <li>高速数字系统首选</li>
+                <li>同步电路设计标准</li>
+            </ul>
+        </li>
+    </ul>
     </div>
     <div style="flex: 0 0 300px;">
-    
-    ![边沿触发J-K触发器](../../img/in-post/Digital_logic/Flip_Flop/Edge-Triggered_J-K_Flip-Flop.png)
-    
+        <img class="shadow" src="/img/in-post/Digital_logic/Flip_Flop/Edge-Triggered_J-K_Flip-Flop.png" width="260">
     </div>
-    </div>
+</div>
     
-    **边沿触发J-K触发器特性表**：
+- **边沿触发J-K触发器特性表**：
     
     | CLK | J | K |  $$ Q_{n+1} $$  | 功能 |
     |:---:|:-:|:-:|:---------:|:----:|
@@ -1375,38 +1551,43 @@ tags:
     | 其他 | X | X |  $$ Q_n $$  | 保持 |
 
 5. Integrated Flip-Flop
+- **集成D触发器 (Integrated D Flip-Flop)**
     
-    **集成D触发器 (Integrated D Flip-Flop)**
-    
-    <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 10px;">
-    <div style="flex: 1;">
-    
-    - **典型器件**：74LS74、74HC74等
-    - **引脚功能**：
-        - D：数据输入端
-        - CLK：时钟输入端（上升沿触发）
-        -  $$ \overline{PR} $$ ：异步预置端（低电平有效）
-        -  $$ \overline{CLR} $$ ：异步清零端（低电平有效）
-        - Q：正输出端
-        -  $$ \overline{Q} $$ ：反输出端
-    - **异步功能**：
-        - 预置： $$ \overline{PR}=0 $$ 时，Q立即置1
-        - 清零： $$ \overline{CLR}=0 $$ 时，Q立即置0
-        - 异步功能优先级高于同步功能
-    - **应用特点**：
-        - 工业标准器件
-        - 可靠性高，使用方便
-        - 适合大规模集成应用
-    
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">    <div style="flex: 1;">
+      <ul>
+        <li><strong>典型器件</strong>：74LS74、74HC74等</li>
+        <li><strong>引脚功能</strong>：
+            <ul>
+                <li>D：数据输入端</li>
+                <li>CLK：时钟输入端（上升沿触发）</li>
+                <li>P̄R ：异步预置端（低电平有效）</li>
+                <li>C̄LR ：异步清零端（低电平有效）</li>
+                <li>Q：正输出端</li>
+                <li>Q̄ ：反输出端</li>
+            </ul>
+        </li>
+        <li><strong>异步功能</strong>：
+            <ul>
+                <li>预置： P̄R=0 时，Q立即置1</li>
+                <li>清零： C̄LR=0 时，Q立即置0</li>
+                <li>异步功能优先级高于同步功能</li>
+            </ul>
+        </li>
+        <li><strong>应用特点</strong>：
+            <ul>
+                <li>工业标准器件</li>
+                <li>可靠性高，使用方便</li>
+                <li>适合大规模集成应用</li>
+            </ul>
+        </li>
+    </ul>
     </div>
     <div style="flex: 0 0 300px;">
-    
-    ![集成D触发器](../../img/in-post/Digital_logic/Flip_Flop/Integrated_D_Flip-Flop.png)
-    
+        <img class="shadow" src="/img/in-post/Digital_logic/Flip_Flop/Integrated_D_Flip-Flop.png" width="260">
     </div>
-    </div>
+</div>
     
-    **集成D触发器完整功能表**：
+- **集成D触发器完整功能表**：
     
     |  $$ \overline{PR} $$  |  $$ \overline{CLR} $$  | CLK | D | Q |  $$ \overline{Q} $$  | 说明 |
     |:---------------:|:----------------:|:---:|:-:|:-:|:--------------:|:----:|
@@ -1416,65 +1597,78 @@ tags:
     | 1 | 1 | ↑ | 0 | 0 | 1 | 同步清零 |
     | 1 | 1 | ↑ | 1 | 1 | 0 | 同步置位 |
     | 1 | 1 | 其他 | X |  $$ Q_n $$  |  $$ \overline{Q_n} $$  | 保持状态 |
+- **集成J-K触发器 (Integrated J-K Flip-Flop)**
     
-    **集成J-K触发器 (Integrated J-K Flip-Flop)**
-    
-    <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 10px;">
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">  
     <div style="flex: 1;">
-    
-    - **典型器件**：74LS76、74HC76等
-    - **引脚配置**：
-        - J、K：数据输入端
-        - CLK：时钟输入端
-        -  $$ \overline{PR} $$ ：异步预置端
-        -  $$ \overline{CLR} $$ ：异步清零端
-        - Q、 $$ \overline{Q} $$ ：输出端
-    - **功能完备性**：
-        - 包含所有基本逻辑功能
-        - 异步和同步控制并存
-        - 灵活的控制方式
-    - **设计优势**：
-        - 通用性强，适应性好
-        - 可实现复杂的时序逻辑
-        - 是构建复杂数字系统的基础
-    
+      <ul>
+        <li><strong>典型器件</strong>：74LS76、74HC76等</li>
+        <li><strong>引脚配置</strong>：
+            <ul>
+                <li>J、K：数据输入端</li>
+                <li>CLK：时钟输入端</li>                <li>P̄R ：异步预置端</li>
+                <li>C̄LR ：异步清零端</li>
+                <li>Q、 Q̄ ：输出端</li>
+            </ul>
+        </li>
+        <li><strong>功能完备性</strong>：
+            <ul>
+                <li>包含所有基本逻辑功能</li>
+                <li>异步和同步控制并存</li>
+                <li>灵活的控制方式</li>
+            </ul>
+        </li>
+        <li><strong>设计优势</strong>：
+            <ul>
+                <li>通用性强，适应性好</li>
+                <li>可实现复杂的时序逻辑</li>
+                <li>是构建复杂数字系统的基础</li>
+            </ul>
+        </li>
+    </ul>
     </div>
     <div style="flex: 0 0 300px;">
-    
-    ![集成J-K触发器](../../img/in-post/Digital_logic/Flip_Flop/Integrated_J-K_Flip-Flop.png)
-    
+        <img class="shadow" src="/img/in-post/Digital_logic/Flip_Flop/Integrated_J-K_Flip-Flop.png" width="260">
     </div>
-    </div>
+</div>
+
+- **集成T触发器 (Integrated T Flip-Flop)**
     
-    **集成T触发器 (Integrated T Flip-Flop)**
-    
-    <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 10px;">
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">  
     <div style="flex: 1;">
-    
-    - **实现方式**：通常由J-K触发器连接而成（J=K=T）
-    - **输入端**：
-        - T (Toggle)：翻转控制输入
-        - CLK：时钟输入
-    - **功能特点**：
-        - T=0时保持当前状态
-        - T=1时在时钟边沿翻转状态
-        - 专门用于计数和分频应用
-    - **逻辑方程**：
-        -  $$ Q_{n+1} = T \overline{Q_n} + \overline{T} Q_n = T ⊕ Q_n $$ 
-    - **典型应用**：
-        - 二进制计数器
-        - 分频器设计
-        - 时钟信号处理
-    
-    </div>
+      <ul>
+        <li><strong>实现方式</strong>：通常由J-K触发器连接而成（J=K=T）</li>
+        <li><strong>输入端</strong>：
+            <ul>
+                <li>T (Toggle)：翻转控制输入</li>
+                <li>CLK：时钟输入</li>
+            </ul>
+        </li>
+        <li><strong>功能特点</strong>：
+            <ul>
+                <li>T=0时保持当前状态</li>
+                <li>T=1时在时钟边沿翻转状态</li>
+                <li>专门用于计数和分频应用</li>
+            </ul>
+        </li>
+        <li><strong>逻辑方程</strong>：
+            <ul>
+                <li>Q<sub>n+1</sub> = TQ̄<sub>n</sub> + T̄Q<sub>n</sub> = T ⊕ Q<sub>n</sub> </li>
+            </ul>
+        </li>
+        <li><strong>典型应用</strong>：
+            <ul>
+                <li>二进制计数器</li>
+            </ul>
+        </li>
+    </ul>
+    </div> 
     <div style="flex: 0 0 300px;">
-    
-    ![集成T触发器](../../img/in-post/Digital_logic/Flip_Flop/Integrated_T_Flip-Flop.png)
-    
+        <img class="shadow" src="/img/in-post/Digital_logic/Flip_Flop/Integrated_T_Flip-Flop.png" width="260">
     </div>
-    </div>
+</div>
     
-    **T触发器特性表**：
+- **T触发器特性表**：
     
     | CLK | T |  $$ Q_{n+1} $$  | 说明 |
     |:---:|:-:|:---------:|:----:|
@@ -1484,11 +1678,11 @@ tags:
 
 6. Conversion Between Flip-Flop
     
-    **触发器类型转换原理**
+- **触发器类型转换原理**
     
     触发器之间的转换是通过在目标触发器的输入端增加适当的组合逻辑电路来实现的。转换的核心是使目标触发器的特性表与所需触发器的特性表相匹配。
     
-    **D触发器转换为其他类型**
+- **D触发器转换为其他类型**
     
     | 目标类型 | 转换电路 | 逻辑表达式 | 说明 |
     |:--------:|:--------:|:----------:|:----:|
@@ -1504,7 +1698,7 @@ tags:
     | **T触发器** | J=T, K=T |  $$ J = K = T $$  | 直接连接实现 |
     | **R-S触发器** | J=S, K=R |  $$ J = S, K = R $$  | 功能对应关系 |
     
-    **转换设计步骤**：
+- **转换设计步骤**：
     
     1. **列出目标触发器的特性表**
     2. **列出现有触发器的特性表**  
@@ -1512,7 +1706,7 @@ tags:
     4. **设计输入逻辑电路**
     5. **验证转换正确性**
     
-    **转换实例：D触发器实现J-K功能**
+- **转换实例：D触发器实现J-K功能**
     
     |  $$ Q_n $$  | J | K |  $$ Q_{n+1} $$  | D |
     |:-----:|:-:|:-:|:---------:|:-:|
@@ -1525,9 +1719,9 @@ tags:
     | 1 | 1 | 0 | 1 | 1 |
     | 1 | 1 | 1 | 0 | 0 |
     
-    **卡诺图化简得到**： $$ D = J\overline{Q_n} + \overline{K}Q_n $$ 
+- **卡诺图化简得到**： $$ D = J\overline{Q_n} + \overline{K}Q_n $$ 
     
-    **触发器选择指南**：
+- **触发器选择指南**：
     
     | 应用场合 | 推荐类型 | 原因 |
     |:--------:|:--------:|:----:|
