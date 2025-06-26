@@ -64,7 +64,9 @@ kramdown:
   math_engine: mathjax
   input: GFM
   syntax_highlighter: rouge
-
+  auto_ids: true
+  hard_wrap: false
+  
 # Disqus settings
 # disqus_username: your_disqus_username
 

@@ -172,32 +172,20 @@ layout: default
 </style>
 {% endif %}
 
-<head>
-    <!-- ...existing code... -->
-    <script type="text/javascript" async
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-    </script>
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [['$','$'], ['\\(','\\)']],
-                displayMath: [['$$','$$'], ['\\[','\\]']],
-                processEscapes: true
-            }
-        });
-    </script>
-</head>
+
 
 <!-- Mermaid -->
-<script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    if (typeof mermaid !== 'undefined') {
-        mermaid.initialize({
-            startOnLoad: true,
-            theme: 'default',
-            securityLevel: 'loose'
-        });
-    }
-});
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: 'default',
+        themeVariables: {
+            primaryColor: '#bb2528',
+            primaryTextColor: '#fff',
+            primaryBorderColor: '#7C0000',
+            lineColor: '#F8B229'
+        }
+    });
 </script>
