@@ -4,7 +4,7 @@ title:      "计算机组成原理PPT整理.25"
 subtitle:   " \"Computer Organization and Architecture\""
 date:       2025-12-3 20:00:00
 author:     "LanZinYtt"
-header-img: ""
+header-img: "img/in-post/Computer_Organization_and_Architecture/Computer_Organization_and_Architecture_header.jpg"
 catalog: true
 tags:
     - Core_General_Education_Courses
