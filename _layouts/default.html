@@ -18,6 +18,26 @@
 <!-- <img src="/img/icon_wechat.png" width="0" height="0" /> -->
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
+{% if page.page-mathjax or site.page-mathjax %}
+<!-- Add support for Mathjax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true,
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+{% endif %}
+
 </body>
 
 </html>
