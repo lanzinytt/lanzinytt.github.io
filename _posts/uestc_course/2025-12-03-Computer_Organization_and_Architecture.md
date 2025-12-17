@@ -7,7 +7,8 @@ author:     "LanZinYtt"
 header-img: "img/in-post/Computer_Organization_and_Architecture/Computer_Organization_and_Architecture_header.jpg"
 catalog: true
 tags:
-    - Core_General_Education_Courses
+    - Computer_Science_Specialized_Courses
+    - Principles_of_Computer_Composition
 ---
 
 # 计算机组成原理
