@@ -4,7 +4,7 @@ title:      "计算机组成原理复习要点整理.25"
 subtitle:   " \"Computer Organization and Architecture\""
 date:       2025-12-16 20:00:00
 author:     "LanZinYtt"
-header-img: "img/in-post/Computer_Organization_and_Architecture/Computer_Organization_and_Architecture_header_2.jpg"
+header-img: "img/in-post/Computer_Organization_and_Architecture/Computer_Organization_and_Architecture_header_2.png"
 catalog: true
 tags:
     - Computer_Science_Specialized_Courses
@@ -21,7 +21,7 @@ tags:
         - 第二代采用晶体管元件，磁芯作内存，磁鼓、磁带作外存等。
         - 第三代采用中小规模集成电路，半导体存储器作内存，出现了微程序控制，Cache，虚拟存储器，流水线等技术。IBM公司提出了“兼容机”的概念，DEC公司提出了总线结构。 
         - 第四代采用大规模/超大规模集成电路，出现了微处理器，出现了共享存储器，分布式存储器及大规模并行处理系统等技术。
-    2. `**冯·诺依曼结构的主要基本思想**`
+    2. **`冯·诺依曼结构的主要基本思想`**
         1. **采用“存储程序”的工作方式。**
         2. 计算机由**运算器、控制器、存储器、输入设备和输出设备**5个基本部件组成。
         3. 存储器不仅能存放数据，而且也能存放指令，形式上数据和指令没有区别，但计算机应能区分它们；控制器应能控制指令的自动执行；运算器应能进行加、减、乘、除4种基本算术运算，并且也能进行逻辑运算；操作人员可以通过输入/输出设备使用计算机。
@@ -43,7 +43,7 @@ tags:
     1. **具体的性能评价名词**：
         - **响应时间**：也称为执行时间(executiontime)或等待时间(latency),是指从作业提交开始到作业完成所用的时间。
         - **吞吐率**：表示在单位时间内所完成的工作量。
-        - `**CPU时间**`
+        - **`CPU时间`**
             - 用户感觉到的执行时间分成用户CPU时间和其他时间
             - **用户CPU时间**
                 - 真正用于用户程序代码的执行时间
@@ -58,7 +58,7 @@ tags:
         - 基准程序（Benchmarks）     
     2. **CPI的计算**
         - 程序的综合CPI也可由以下公式求得，其中 $F_i$ 表示第 $i$ 种指令在程序中所占的比例：
-        - $$ \mathrm{CPI} = \sum_{i=1}^{n} (\mathrm{CPI}_i \times F_i) = \frac{\text{程序总时钟周期数}}{\text{程序总指令条数}} $$
+        - $ \mathrm{CPI} = \sum_{i=1}^{n} (\mathrm{CPI}_i \times F_i) = \frac{\text{程序总时钟周期数}}{\text{程序总指令条数}} $
     3. 阿姆达尔定律及简单应用
         - 阿姆达尔定律定义了增强或加速部分部件而获得的整体性能的改进程度：
         - 改进后的执行时间=改进部分执行时间÷改进部分的改进倍数+未改进部分执行时间
@@ -104,34 +104,34 @@ tags:
         - **OF（溢出标志，Overflow Flag）** ：表示有符号数运算结果是否溢出。  
             - 加法：当两个操作数符号相同，结果符号与操作数不同，则溢出。  
             - 公式：  
-                $$
+                $
                 \text{OF} = (A_{n-1} = B_{n-1}) \land (S_{n-1} \neq A_{n-1})
-                $$
+                $
                 其中 $A_{n-1}$、$B_{n-1}$、$S_{n-1}$ 分别为操作数A、B和结果S的最高位（符号位）。
 
         - **SF（符号标志，Sign Flag）** ：结果的最高位（符号位），反映结果是正还是负。  
             - 公式：  
-                $$
+                $
                 \text{SF} = S_{n-1}
-                $$
+                $
 
         - **CF（进位标志，Carry Flag）**  ：表示无符号数运算时最高位是否有进位（加法）或借位（减法）。  
             - 加法：结果产生了第 $n$ 位进位时，CF=1。  
             - 减法：被减数不够减时，CF=1。  
             - 公式（加法）：  
-                $$
+                $
                 \text{CF} = \text{第}~n~\text{位进位}
-                $$
+                $
 
         - **ZF（零标志，Zero Flag）**  ：结果是否为零。  
             - 公式：  
-                $$
+                $
                 \text{ZF} = 
                 \begin{cases}
                 1, & \text{若}~S=0 \\
                 0, & \text{若}~S\neq 0
                 \end{cases}
-                $$
+                $
 
     4. 如何判断无符号数和带符号数加减运算时发生溢出。
         - **无符号数加法溢出**  
