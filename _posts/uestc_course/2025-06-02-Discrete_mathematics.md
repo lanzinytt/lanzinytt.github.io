@@ -16,7 +16,7 @@ tags:
 # 离散数学
 
 <div class="mermaid">
-flowchart LR
+graph TD
     A[离散数学] --> B[预备知识]
     A --> C[数理逻辑]
     A --> D[二元关系]
