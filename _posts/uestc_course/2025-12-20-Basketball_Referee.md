@@ -4,7 +4,7 @@ title:      "篮球裁判.25"
 subtitle:   " \"Basketball_Referee\""
 date:       2025-12-20 14:00:00
 author:     "LanZinYtt"
-header-img: ""
+header-img: "img/in-post/Basketball_Referee/header.jpg"
 catalog: true
 tags:
 
