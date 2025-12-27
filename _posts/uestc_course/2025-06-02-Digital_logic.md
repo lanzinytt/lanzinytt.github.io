@@ -20,32 +20,33 @@ tags:
 # 计算机组成原理-数字逻辑概论
 
 ## Number System and Codes
+
 1. Number Systems
 
     - 数制中我们常用的有十进制(**Dec**imal)、二进制(**B**inary)、十六进制(**Hex**adecimal)、八进制(**Oct**al)
 
 2. Number Conversion
 
-    - 在k进制下，数的实际大小 $$ S_k=\sum_{i=-n}^{m-1} a_i \times k^i  (a_i \in \{0, 1, 2, \ldots, k-1\}) $$ 
-    - 例如： $$ (2A.3)_{16} = 2 \times 16^1 + 10 \times 16^0 + 3 \times 16^{-1} = 32 + 10 + 0.1875 = (42.1875)_{10} $$ 
+    - 在k进制下，数的实际大小 $$ S_k=\sum_{i=-n}^{m-1} a_i \times k^i  (a_i \in \{0, 1, 2, \ldots, k-1\}) $$
+    - 例如： $$ (2A.3)_{16} = 2 \times 16^1 + 10 \times 16^0 + 3 \times 16^{-1} = 32 + 10 + 0.1875 = (42.1875)_{10} $$
     - **LSB (Least Significant Bit)** 最低有效位、**MSB (Most Significant Bit)** 最高有效位，在大端模式中MSB先传输，小端模式中LSB先传输
 
 3. Signed Binary Numbers
     - Signed-Magnitude(原码)
         - 添加0或1在MSB前，表示正负
         - 其余位正常表示数值大小
-        - 例如： $$ +5 = [0101]_{SM} $$ ， $$ -5 = [1101]_{SM} $$ ， $$ -0=[10..0]_{SM} $$ 
-        - 范围： $$ -(2^{n-1}-1) $$  到  $$ +(2^{n-1}-1) $$ 
+        - 例如： $$ +5 = [0101]_{SM} $$ ， $$ -5 = [1101]_{SM} $$ ， $$ -0=[10..0]_{SM} $$
+        - 范围： $$ -(2^{n-1}-1) $$  到  $$ +(2^{n-1}-1) $$
     - Ones' Complement(反码)
         - 当数值为负，所有位反转并在前添1，当数值为正，直接添0
-        - 例如： $$ +5 = [0101]_{OC} $$ ， $$ -5 = [1010]_{OC} $$ ， $$ -0=[11..1]_{OC} $$ 
-        - 范围： $$ -(2^{n-1}-1) $$  到  $$ +(2^{n-1}-1) $$ 
+        - 例如： $$ +5 = [0101]_{OC} $$ ， $$ -5 = [1010]_{OC} $$ ， $$ -0=[11..1]_{OC} $$
+        - 范围： $$ -(2^{n-1}-1) $$  到  $$ +(2^{n-1}-1) $$
         - 优点：加减法运算统一，可直接由原码转换
         - 注意：存在两个零表示（+0和-0）
     - **Twos' Complement**(补码)
         - 当数值为负，先取反码再加1；当数值为正，直接添0
-        - 例如： $$ +5 = [0101]_{TC} $$ ， $$ -5 = [1011]_{TC} $$ ， $$ +0=[00..0]_{TC} $$ 
-        - 范围： $$ -2^{n-1} $$  到  $$ +(2^{n-1}-1) $$ 
+        - 例如： $$ +5 = [0101]_{TC} $$ ， $$ -5 = [1011]_{TC} $$ ， $$ +0=[00..0]_{TC} $$
+        - 范围： $$ -2^{n-1} $$  到  $$ +(2^{n-1}-1) $$
         - 优点：只有一个零表示，加减法运算统一
         - 计算规律：负数的补码 = 原码取反 + 1，或者从右往左第一个1保持不变，其余位取反
 4. Addition and Subtraction of Signed Binary Numbers
@@ -71,19 +72,21 @@ tags:
     | 7      | 0111   | 1010   | 1010   |
     | 8      | 1000   | 1011   | 1011   |
     | 9      | 1001   | 1100   | 1100   |
-    
+
     - Gray Code(格雷码)
         - 具有相邻数值只有一位编码不同的优越特性，有效避免多位跳变，提高系统可靠性。
         - **二进制转格雷码**：
-            -  $$ G_{n-1} = B_{n-1} $$ （最高位相同）
-            -  $$ G_i = B_{i+1} ⊕ B_i $$ （其他位为高位二进制与当前位异或）
+            - $$ G_{n-1} = B_{n-1} $$ （最高位相同）
+            - $$ G_i = B_{i+1} ⊕ B_i $$ （其他位为高位二进制与当前位异或）
     - Parity Code(奇偶校验码)
         - Odd Parity(奇校验)
             - 检验位设置使得整个码字中的1的个数为奇数
         - Even Parity(偶校验)
             - 校验位设置使得整个码字中的1的个数为偶数
         - 只能检测奇数个bit错误
+
 ## Logical Algebra
+
 1. Three Basic Function of Logical Algebra
     - AND
     - OR
@@ -93,60 +96,60 @@ tags:
     <details><summary>布尔代数基本定律</summary>
 
     - 交换律 (Commutative Laws)
-            -  $$ A + B = B + A $$ 
-            -  $$ A · B = B · A $$ 
+            -  $$ A + B = B + A $$
+            -  $$ A · B = B · A $$
     - 结合律 (Associative Laws)
-        -  $$ A + (B + C) = (A + B) + C $$ 
-        -  $$ A · (B · C) = (A · B) · C $$ 
+        - $$ A + (B + C) = (A + B) + C $$
+        - $$ A · (B · C) = (A · B) · C $$
     - 分配律 (Distributive Laws)
-        -  $$ A · (B + C) = A · B + A · C $$ 
-        -  $$ A + (B · C) = (A + B) · (A + C) $$ 
+        - $$ A · (B + C) = A · B + A · C $$
+        - $$ A + (B · C) = (A + B) · (A + C) $$
     - 互补律 (Complement Laws)
-        -  $$ A + \overline{A} = 1 $$ 
-        -  $$ A · \overline{A} = 0 $$ 
+        - $$ A + \overline{A} = 1 $$
+        - $$ A · \overline{A} = 0 $$
     - 同一律 (Identity Laws)
-        -  $$ A + 0 = A $$ 
-        -  $$ A · 1 = A $$ 
+        - $$ A + 0 = A $$
+        - $$ A · 1 = A $$
     - 零元律 (Null Laws)
-        -  $$ A + 1 = 1 $$ 
-        -  $$ A · 0 = 0 $$ 
+        - $$ A + 1 = 1 $$
+        - $$ A · 0 = 0 $$
     - 重复律 (Idempotent Laws)
-        -  $$ A + A = A $$ 
-        -  $$ A · A = A $$ 
+        - $$ A + A = A $$
+        - $$ A · A = A $$
     - 吸收律 (Absorption Laws)
-        -  $$ A + A · B = A $$ 
-        -  $$ A · (A + B) = A $$ 
+        - $$ A + A · B = A $$
+        - $$ A · (A + B) = A $$
     - 反演律 (Involution Law)
-        -  $$ \overline{\overline{A}} = A $$     
+        - $$ \overline{\overline{A}} = A $$
     - **德摩根定律** (De Morgan's Laws)
-        -  $$ \overline{A+B} = \overline{A} · \overline{B} $$ 
-        -  $$ \overline{A · B} = \overline{A} + \overline{B} $$ 
+        - $$ \overline{A+B} = \overline{A} · \overline{B} $$
+        - $$ \overline{A · B} = \overline{A} + \overline{B} $$
     - **一致律** (Consensus Laws)
-        -  $$ A · B + \overline{A} · C + B · C = A · B + \overline{A} · C $$ 
-        -  $$ (A + B) · (\overline{A} + C) · (B + C) = (A + B) · (\overline{A} + C) $$ 
+        - $$ A · B + \overline{A} · C + B · C = A · B + \overline{A} · C $$
+        - $$ (A + B) · (\overline{A} + C) · (B + C) = (A + B) · (\overline{A} + C) $$
     - **冗余律** (Redundancy Laws)
-        -  $$ A + \overline{A} · B = A + B $$ 
-        -  $$ A · (\overline{A} + B) = A · B $$ 
-    
+        - $$ A + \overline{A} · B = A + B $$
+        - $$ A · (\overline{A} + B) = A · B $$
+
     </details>
-    
+
     - **Duality Rule** (对偶规则)
         - 定义：将布尔表达式中的 + 与 ·，0 与 1 互换，变量不变，得到对偶式
         - **重要性质**：如果一个布尔等式成立，其对偶式也必然成立
         - 示例： $$ F_1=A+B·C $$ ， $$ F_2=(A+B)·(A+C) $$  ，有 $$ F_1^D=A·(B+C)=A·B+A·C=F_2^D $$ ，故 $$ F_1=F_2 $$  
     - **Expansion Rule** (Shannon's Expansion Theorem)
-        - **基本形式**：对于任意布尔函数  $$ F(x_1, x_2, \ldots, x_n) $$ ，可以按照变量  $$ x_i $$  进行展开：$$  F(x_1, x_2, \ldots, x_n) = x_i \cdot F(x_1, \ldots, x_{i-1}, 1, x_{i+1}, \ldots, x_n) + \overline{x_i} \cdot F(x_1, \ldots, x_{i-1}, 0, x_{i+1}, \ldots, x_n) $$ 
+        - **基本形式**：对于任意布尔函数  $$ F(x_1, x_2, \ldots, x_n) $$ ，可以按照变量  $$ x_i $$  进行展开：$$  F(x_1, x_2, \ldots, x_n) = x_i \cdot F(x_1, \ldots, x_{i-1}, 1, x_{i+1}, \ldots, x_n) + \overline{x_i} \cdot F(x_1, \ldots, x_{i-1}, 0, x_{i+1}, \ldots, x_n) $$
 
-        - **递归展开**：可以对多个变量连续展开 $$ F(A,B,C) = A \cdot F(1,B,C) + \overline{A} \cdot F(0,B,C) $$ $$ = A \cdot [B \cdot F(1,1,C) + \overline{B} \cdot F(1,0,C)] + \overline{A} \cdot [B \cdot F(0,1,C) + \overline{B} \cdot F(0,0,C)]  $$ 
+        - **递归展开**：可以对多个变量连续展开 $$ F(A,B,C) = A \cdot F(1,B,C) + \overline{A} \cdot F(0,B,C) $$ $$ = A \cdot [B \cdot F(1,1,C) + \overline{B} \cdot F(1,0,C)] + \overline{A} \cdot [B \cdot F(0,1,C) + \overline{B} \cdot F(0,0,C)]  $$
     - 异或同或
         - 异或与同或满足分配律和交换律
         - 异或与同或的零一律很特殊
-            -  $$ A ⊕ 0 = A $$ 
-            -  $$ A ⊕ 1 = \overline{A} $$ 
-            -  $$ A ⊙ 0 = \overline{A} $$ 
-            -  $$ A ⊙ 1 = A $$ 
+            - $$ A ⊕ 0 = A $$
+            - $$ A ⊕ 1 = \overline{A} $$
+            - $$ A ⊙ 0 = \overline{A} $$
+            - $$ A ⊙ 1 = A $$
 3. Function Transformation
-    - Standard Froms 
+    - Standard Froms
     - **Canonical AND-OR**
         - **Minterm(极小项)**
             - 定义：n个变量的最小项是包含所有n个变量的乘积项，每个变量以原变量或反变量形式出现且仅出现一次
@@ -162,6 +165,7 @@ tags:
                 | 1 | 0 | 1 | m₅ = A·B̄·C |
                 | 1 | 1 | 0 | m₆ = A·B·C̄ |
                 | 1 | 1 | 1 | m₇ = A·B·C |
+
         - **Canonical OR-AND**
             - **Maxterm(极大项)**
                 - 定义：n个变量的最大项是包含所有n个变量的加法项，每个变量以原变量或反变量形式出现且仅出现一次
@@ -177,6 +181,7 @@ tags:
                 | 1 | 0 | 1 | M₅ = Ā+B+C̄ |
                 | 1 | 1 | 0 | M₆ = Ā+B̄+C |
                 | 1 | 1 | 1 | M₇ = Ā+B̄+C̄ |
+
             - **互补关系**：Mᵢ = m̄ᵢ（第i个最大项等于第i个最小项的反）
             - **德摩根转换**：
                 - 如果 F = Σm(1,3,5,7)，则 F = ΠM(0,2,4,6)
@@ -186,24 +191,24 @@ tags:
     - <details><summary>例题</summary>
 
         Wirte the sum of Minterms of a function
-        -  $$ F(A,B,C)=\overline{(A\overline{B}+B\overline{C})\overline{AB}} $$ 
-        
+        - $$ F(A,B,C)=\overline{(A\overline{B}+B\overline{C})\overline{AB}} $$
+
         <details><summary> 解答过程</summary>
-        
+
         - **Step 1: 化简原函数**
-        -  $$  F(A,B,C) = \overline{(A\overline{B}+B\overline{C})\overline{AB}} \\ = \overline{(A\overline{B}+B\overline{C})} + \overline{\overline{AB}} \\ = \overline{(A\overline{B}+B\overline{C})} + AB \\ = \overline{A\overline{B}} \cdot \overline{B\overline{C}} + AB \\ = (\overline{A}+B) \cdot (\overline{B}+C) + AB  $$ 
+        - $$  F(A,B,C) = \overline{(A\overline{B}+B\overline{C})\overline{AB}} \\ = \overline{(A\overline{B}+B\overline{C})} + \overline{\overline{AB}} \\ = \overline{(A\overline{B}+B\overline{C})} + AB \\ = \overline{A\overline{B}} \cdot \overline{B\overline{C}} + AB \\ = (\overline{A}+B) \cdot (\overline{B}+C) + AB  $$
         - **Step 2: 展开分配律**
-         $$ = \overline{A}\overline{B} + \overline{A}C + B\overline{B} + BC + AB  \\ = \overline{A}\overline{B} + \overline{A}C + BC + AB $$ 
+         $$ = \overline{A}\overline{B} + \overline{A}C + B\overline{B} + BC + AB  \\ = \overline{A}\overline{B} + \overline{A}C + BC + AB $$
         - **Step 3: 补全变量（恢复缺失变量）**
-         $$ \\ \overline{A}\overline{B} = \overline{A}\overline{B}(C + \overline{C}) = \overline{A}\overline{B}C + \overline{A}\overline{B}\overline{C} \\ \overline{A}C = \overline{A}C(B + \overline{B}) = \overline{A}BC + \overline{A}\overline{B}C \\ BC = BC(A + \overline{A}) = ABC + \overline{A}BC \\ AB = AB(C + \overline{C}) = ABC + AB\overline{C} $$ 
+         $$ \\ \overline{A}\overline{B} = \overline{A}\overline{B}(C + \overline{C}) = \overline{A}\overline{B}C + \overline{A}\overline{B}\overline{C} \\ \overline{A}C = \overline{A}C(B + \overline{B}) = \overline{A}BC + \overline{A}\overline{B}C \\ BC = BC(A + \overline{A}) = ABC + \overline{A}BC \\ AB = AB(C + \overline{C}) = ABC + AB\overline{C} $$
         - **Step 4: 合并同类项**
-         $$ F = \overline{A}\overline{B}\overline{C} + \overline{A}\overline{B}C + \overline{A}BC + AB\overline{C} + ABC $$ 
+         $$ F = \overline{A}\overline{B}\overline{C} + \overline{A}\overline{B}C + \overline{A}BC + AB\overline{C} + ABC $$
         - **Step 5: 识别最小项**
          $$  \\ \overline{A}\overline{B}\overline{C} → 000  →   m_0 \\ \overline{A}\overline{B}C → 001 → m_1 \\ \overline{A}BC → 011 → m_3 \\ AB\overline{C} → 110 → m_6 \\ ABC → 111 → m_7
         - **最终答案**：
-         $$ F = m_0 + m_1 + m_3 + m_6 + m_7 = \sum m(0,1,3,6,7) $$ 
-        
-        </details>    
+         $$ F = m_0 + m_1 + m_3 + m_6 + m_7 = \sum m(0,1,3,6,7) $$
+
+        </details>
     </details>
 
 4. Function Simplification
@@ -212,27 +217,28 @@ tags:
         - <details><summary>例题</summary>
 
             Write the simplification of AND-OR functions
-            -  $$ F(A,B,C,D,E) = AC + \overline{B}C + B\overline{D} + C\overline{D} + A(B + \overline{C}) + \overline{A}BC\overline{D} + A\overline{B}DE $$ 
-            
+            - $$ F(A,B,C,D,E) = AC + \overline{B}C + B\overline{D} + C\overline{D} + A(B + \overline{C}) + \overline{A}BC\overline{D} + A\overline{B}DE $$
+
             <details><summary>答案</summary>
-            
-             $$ F=A+\overline{B}C+B\overline{D} $$ 
-            
+
+             $$ F=A+\overline{B}C+B\overline{D} $$
+
             </details>
-            
+
             **tips** ：对于化为最简OR-AND形式的题，可以采用对偶求得AND-OR形式再对偶求得。
 
         </details>
     - **K-Map**(卡诺图\烧烤图)
         - 卡诺图是一种图形化的布尔函数化简方法，通过格雷码排列的方式将逻辑相邻的最小项放在物理相邻的位置。
         - **4变量K-Map** (当变量大于5时难以构造，故一般只用到4变量)
-            
+
             |     | CD=00 | CD=01 | CD=11 | CD=10 |
             |:---:|:-----:|:-----:|:-----:|:-----:|
             |AB=00|  m₀   |  m₁   |  m₃   |  m₂   |
             |AB=01|  m₄   |  m₅   |  m₇   |  m₆   |
             |AB=11| m₁₂   | m₁₃   | m₁₅   | m₁₄   |
             |AB=10|  m₈   |  m₉   | m₁₁   | m₁₀   |
+
         - **化简规则**
             - **基本原则**： $$ AB + A\overline{B} = A $$ （消去不同的变量）
             - **圈的要求**：
@@ -249,38 +255,40 @@ tags:
         - <details><summary>例题</summary>
 
             Use K-Map to simplify the following functions
-            -  $$ F(A,B,C,D) = \sum m(0,1,4,5,6,7,8,9,11,15) $$ 
-            
+            - $$ F(A,B,C,D) = \sum m(0,1,4,5,6,7,8,9,11,15) $$
+
             <details><summary>解答过程</summary>
-            
+
             - **Step 1: 画出4变量卡诺图并填入1**(对于M则是0)
-            
+
             |     | CD=00 | CD=01 | CD=11 | CD=10 |
             |:---:|:-----:|:-----:|:-----:|:-----:|
             |AB=00|   1   |   1   |   0   |   0   |
             |AB=01|   1   |   1   |   1   |   1   |
             |AB=11|   0   |   0   |   1   |   0   |
             |AB=10|   1   |   1   |   1   |   0   |
-            
+
             - **Step 2: 寻找可圈的矩形**
                 - 圈1：m₀,m₁,m₄,m₅ (2×2矩形) →  $$ \overline{A}\overline{C} $$  
-                - 圈2：m₄,m₅,m₆,m₇ (1×4矩形) →  $$ A\overline{B} $$ 
-                - 圈3：m₈,m₉,m₁₁ 需要与边界m₁₅连接 →  $$ B\overline{C}\overline{D} + BC\overline{D} + B\overline{C}D + BCD $$ 
-                
+                - 圈2：m₄,m₅,m₆,m₇ (1×4矩形) →  $$ A\overline{B} $$
+                - 圈3：m₈,m₉,m₁₁ 需要与边界m₁₅连接 →  $$ B\overline{C}\overline{D} + BC\overline{D} + B\overline{C}D + BCD $$
+
             - **Step 3: 重新分析找最优解**
-                - 圈1：m₀,m₁,m₄,m₅ →  $$ \overline{C}\overline{D} $$ 
+                - 圈1：m₀,m₁,m₄,m₅ →  $$ \overline{C}\overline{D} $$
                 - 圈2：m₄,m₅,m₆,m₇ →  $$ A\overline{B} $$  
-                - 圈3：m₈,m₉ →  $$ B\overline{A}\overline{C} $$ 
-                - 圈4：m₁₁,m₁₅ →  $$ BCD $$ 
-                
+                - 圈3：m₈,m₉ →  $$ B\overline{A}\overline{C} $$
+                - 圈4：m₁₁,m₁₅ →  $$ BCD $$
+
             - **最终答案**：
-             $$F = \overline{C}\overline{D} + A\overline{B} + B\overline{A}\overline{C} + BCD $$ 
-            
+             $$F = \overline{C}\overline{D} + A\overline{B} + B\overline{A}\overline{C} + BCD $$
+
             </details>
         </details>
 
 ## Digital Circuit
-1. CMOS Transistor    
+
+1. CMOS Transistor
+
 <div style="display: flex; align-items: flex-start; gap: 20px;">
     <div style="flex: 1;">
         <ul>
@@ -327,12 +335,13 @@ tags:
 </div>
 
 - **CMOS技术优势**
-    - **互补特性**：NMOS和PMOS的导通条件互补，可构成完整的逻辑门电路
-    - **低功耗**：静态时总有一个晶体管处于截止状态，几乎无静态功耗
-    - **高集成度**：晶体管可以做得很小，适合大规模集成电路
-    - **逻辑完备性**：可以实现所有基本逻辑运算(AND, OR, NOT)
+  - **互补特性**：NMOS和PMOS的导通条件互补，可构成完整的逻辑门电路
+  - **低功耗**：静态时总有一个晶体管处于截止状态，几乎无静态功耗
+  - **高集成度**：晶体管可以做得很小，适合大规模集成电路
+  - **逻辑完备性**：可以实现所有基本逻辑运算(AND, OR, NOT)
 
-2. CMOS Gate(这里只挑了典型来讲)    
+1. CMOS Gate(这里只挑了典型来讲)
+
 <div style="display: flex; align-items: flex-start; gap: 20px;">
     <div style="flex: 1;">
         <ul>
@@ -354,7 +363,7 @@ tags:
     <div style="flex: 0 0 300px;">
         <img class="shadow" src="/img/in-post/Digital_logic/CMOS_Gate/CMOS_Inverter.png" width="260">
     </div>
-</div>    
+</div>
 <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
     <div style="flex: 1;">
         <ul>
@@ -376,7 +385,7 @@ tags:
     <div style="flex: 0 0 300px;">
         <img class="shadow" src="/img/in-post/Digital_logic/CMOS_Gate/CMOS_NAND_Gate.png" width="260">
     </div>
-</div>   
+</div>
 <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
     <div style="flex: 1;">
         <ul>
@@ -404,7 +413,7 @@ tags:
     <div style="flex: 0 0 300px;">
         <img class="shadow" src="/img/in-post/Digital_logic/CMOS_Gate/CMOS_Buffer.png" width="260">
     </div>
-</div>   
+</div>
 <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
     <div style="flex: 1;">
         <ul>
@@ -433,7 +442,7 @@ tags:
     <div style="flex: 0 0 300px;">
         <img class="shadow" src="/img/in-post/Digital_logic/CMOS_Gate/Transmission_Gate.png" width="260">
     </div>
-</div>    
+</div>
 <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
     <div style="flex: 1;">
         <ul>
@@ -464,10 +473,10 @@ tags:
             </li>
         </ul>
     </div>
-    <div style="flex: 0 0 300px;">    
+    <div style="flex: 0 0 300px;">
         <img class="shadow" src="/img/in-post/Digital_logic/CMOS_Gate/Three-state_Buffer.png" width="260">
     </div>
-</div>    
+</div>
 <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
     <div style="flex: 1;">
         <ul>
@@ -501,7 +510,7 @@ tags:
     <div style="flex: 0 0 300px;">
         <img class="shadow" src="/img/in-post/Digital_logic/Open-Drain_Output_Circuit.png" width="260">
     </div>
-</div>    
+</div>
 <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
     <div style="flex: 1;">
         <ul>
@@ -541,7 +550,7 @@ tags:
 </div>
 <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
     <div style="flex: 1;">
-    
+
     <ul>
         <li><strong>CMOS电路的未使用输入端处理 (Unused Inputs of CMOS Circuit)</strong>
             <ul>
@@ -573,8 +582,8 @@ tags:
     </div>
 </div>
 
-3. Electrical Characteristics
-    
+1. Electrical Characteristics
+
     - **扇入 (Fan-in)**
         - **定义**：一个逻辑门能够接受的输入信号的最大数量
         - **影响因素**：
@@ -594,11 +603,11 @@ tags:
             - **输入负载特性**：被驱动门电路的输入电流需求
             - **电压电平要求**：保证逻辑电平的有效性
         - **计算公式**：
-             $$ \text{扇出} = \min\left(\frac{I_{OL(max)}}{I_{IL(max)}}, \frac{I_{OH(max)}}{I_{IH(max)}}\right) $$ 
-            -  $$ I_{OL} $$ ：输出低电平时的灌电流能力
-            -  $$ I_{OH} $$ ：输出高电平时的拉电流能力  
-            -  $$ I_{IL} $$ ：输入低电平时的漏电流
-            -  $$ I_{IH} $$ ：输入高电平时的输入电流
+             $$ \text{扇出} = \min\left(\frac{I_{OL(max)}}{I_{IL(max)}}, \frac{I_{OH(max)}}{I_{IH(max)}}\right) $$
+            - $$ I_{OL} $$ ：输出低电平时的灌电流能力
+            - $$ I_{OH} $$ ：输出高电平时的拉电流能力  
+            - $$ I_{IL} $$ ：输入低电平时的漏电流
+            - $$ I_{IH} $$ ：输入高电平时的输入电流
         - **典型扇出值**：
             - 标准TTL：10
             - LS-TTL：20  
@@ -607,7 +616,7 @@ tags:
 
     - **电平兼容性分析**
         - **逻辑电平定义**：
-            
+
             | 参数 | TTL | CMOS(5V) | CMOS(3.3V) |
             |:----:|:---:|:--------:|:----------:|
             |  $$ V_{IH(min)} $$  | 2.0V | 3.5V | 2.0V |
@@ -616,16 +625,16 @@ tags:
             |  $$ V_{OL(max)} $$  | 0.4V | 0.4V | 0.4V |
 
         - **兼容性判断标准**：
-            - 输出高电平 ≥ 输入高电平阈值： $$ V_{OH(min)} \geq V_{IH(min)} $$ 
-            - 输出低电平 ≤ 输入低电平阈值： $$ V_{OL(max)} \leq V_{IL(max)} $$ 
+            - 输出高电平 ≥ 输入高电平阈值： $$ V_{OH(min)} \geq V_{IH(min)} $$
+            - 输出低电平 ≤ 输入低电平阈值： $$ V_{OL(max)} \leq V_{IL(max)} $$
             - 驱动能力满足：扇出计算结果 ≥ 实际负载数量
 
     - **74HCT驱动74LS的实例分析**
-          
+
         <div style="flex: 1;">
-        
+
         <strong>电路特性参数</strong>：
-        
+
         <table>
         <tr>
         <th>器件类型</th>
@@ -649,7 +658,7 @@ tags:
         <td>-</td>
         </tr>
         </table>
-        
+
         <table>
         <tr>
         <th>器件类型</th>
@@ -673,15 +682,15 @@ tags:
         <td>0.4mA</td>
         </tr>
         </table>
-        
+
         </div>
         </div>
-        
+
         **例题计算**：
-            - (**High-state fanout**)高电平扇出： $$ \frac{I_{OH}}{I_{IH}}\frac{4mA}{20µA} = 200 $$ 
-            - (**Low-state fanout**)低电平扇出： $$ \frac{I_{OL}}{I_{IL}}=\frac{4mA}{0.4mA} = 10 $$ 
+            - (**High-state fanout**)高电平扇出： $$ \frac{I_{OH}}{I_{IH}}\frac{4mA}{20µA} = 200 $$
+            - (**Low-state fanout**)低电平扇出： $$ \frac{I_{OL}}{I_{IL}}=\frac{4mA}{0.4mA} = 10 $$
             - (**Overall fanout**)实际扇出 = min(200, 10) = **10**
-            - (**Residual driving capacity of high state output**)剩余驱动力:  $$  I_{OH}-F_{overall} \times I_{IH}=3.8mA  $$ 
+            - (**Residual driving capacity of high state output**)剩余驱动力:  $$  I_{OH}-F_{overall} \times I_{IH}=3.8mA  $$
         应用优势：
         - 74HCT专为TTL兼容而设计，具有TTL电平阈值
         - 保持CMOS的低功耗特性
@@ -693,12 +702,12 @@ tags:
         - **布线考虑**：多个负载需要考虑传输线效应和信号延迟
         - **噪声容限**：负载增加会降低系统的抗噪声能力
     - **直流噪声容限 (Direct Current Noise Margin)**
-          
+
         <div style="flex: 1;">
-        
+
         <ul>
             <li><strong>定义</strong>：数字电路在直流条件下能够容忍的噪声干扰的最大幅度，是衡量电路抗干扰能力的重要指标</li>
-            
+
             <li><strong>计算公式</strong>：
                 <ul>
                     <li><strong>低电平噪声容限</strong>： NM<sub>L</sub> = V<sub>IL(max)</sub> - V<sub>OL(max)</sub> </li>
@@ -715,41 +724,43 @@ tags:
                 </ul>
             </li>
         </ul>
-        
+
         </div>
         </div>
-        
+
         **典型电路族的噪声容限对比**：
-        
+
         | 电路族 |  $$ V_{IL(max)} $$  |  $$ V_{OL(max)} $$  |  $$ NM_L $$  |  $$ V_{OH(min)} $$  |  $$ V_{IH(min)} $$  |  $$ NM_H $$  | 总噪声容限 |
         |:------:|:-------------:|:-------------:|:------:|:-------------:|:-------------:|:------:|:----------:|
         | **CMOS** | 0.8V | 0.33V | **0.47V** | 3.84V | 2.0V | **1.84V** | **1.47V** |
         | **TTL** | 0.8V | 0.5V | **0.3V** | 2.7V | 2.0V | **0.7V** | **0.3V** |
-        
+
         - **计算**
         <img class="shadow" src="/img/in-post/Digital_logic/Direct_Current_Noise_Margin.png" width="260">
 
 ## Combination
+
 ## Combination
+
 1. Analysis of Combinational Logic Circuit
     - **分析组合电路的步骤**
         1. **确定电路的输入和输出**
             - 识别电路的输入变量（通常用A、B、C等表示）
             - 确定电路的输出变量（通常用Y、F等表示）
-        
+
         2. **从输入到输出逐级分析**
             - 从输入端开始，逐级向输出端分析
             - 写出每个门电路的逻辑表达式
             - 将各级表达式代入，得到最终的逻辑函数
-        
+
         3. **化简逻辑函数**
             - 使用布尔代数定律化简表达式
             - 或使用卡诺图进行化简
-        
+
         4. **列出真值表**
             - 根据化简后的逻辑函数
             - 列出所有输入组合对应的输出值
-        
+
         5. **描述电路功能**
             - 根据真值表分析电路实现的逻辑功能
             - 确定电路的应用场合
@@ -759,63 +770,63 @@ tags:
         1. **问题分析和规格说明**
             - 明确电路要实现的功能
             - 确定输入输出信号的数量和含义
-        
+
         2. **定义输入与输出的变量**
             - 为每个输入信号分配变量名（如A、B、C等）
             - 为每个输出信号分配变量名（如Y、F等）
-        
+
         3. **定义0与1的状态**
             - 明确每个变量的逻辑含义
             - 例如：A=1表示开关闭合，A=0表示开关断开
-        
+
         4. **画真值表**
             - 列出所有可能的输入组合
             - 根据逻辑要求确定每种组合的输出值
-        
+
         5. **建立逻辑函数**
             - 根据真值表写出逻辑函数表达式
             - 可以用最小项之和或最大项之积的形式
-        
+
         6. **简化逻辑函数**
             - 使用布尔代数定律或卡诺图化简
             - 得到最简的逻辑表达式
-        
+
         7. **画电路图**
             - 根据化简后的逻辑表达式画出电路图
             - 选择合适的逻辑门实现电路
-        
+
         8. **验证设计**
             - 检查电路是否满足设计要求
             - 进行时序分析和功能验证
 3. Representative Combinational Logic Circuit
-    
+
     **常用集成电路器件详解**
-    
+
     - **74183 - 全加器 (Full Adder)**
         - **实际作用**：4位二进制全加器，可进行两个4位数的加法运算
         - **输入端**：
-            -  $$ A_3A_2A_1A_0 $$ ：4位被加数
-            -  $$ B_3B_2B_1B_0 $$ ：4位加数  
-            -  $$ C_0 $$ ：最低位进位输入
+            - $$ A_3A_2A_1A_0 $$ ：4位被加数
+            - $$ B_3B_2B_1B_0 $$ ：4位加数  
+            - $$ C_0 $$ ：最低位进位输入
         - **输出端**：
-            -  $$ \Sigma_3\Sigma_2\Sigma_1\Sigma_0 $$ ：4位和输出
-            -  $$ C_4 $$ ：最高位进位输出
+            - $$ \Sigma_3\Sigma_2\Sigma_1\Sigma_0 $$ ：4位和输出
+            - $$ C_4 $$ ：最高位进位输出
         - **逻辑表达式**：
-            -  $$ \Sigma_i = A_i ⊕ B_i ⊕ C_i $$ 
-            -  $$ C_{i+1} = A_iB_i + A_iC_i + B_iC_i $$ 
+            - $$ \Sigma_i = A_i ⊕ B_i ⊕ C_i $$
+            - $$ C_{i+1} = A_iB_i + A_iC_i + B_iC_i $$
         - **应用**：多位二进制加法运算，可级联实现更多位的加法器
 
     - **74283 - 4位二进制全加器**
         - **实际作用**：与74183功能相同，4位并行二进制全加器
         - **输入端**：
-            -  $$ A_4A_3A_2A_1 $$ ：4位被加数
-            -  $$ B_4B_3B_2B_1 $$ ：4位加数
-            -  $$ C_0 $$ ：进位输入
+            - $$ A_4A_3A_2A_1 $$ ：4位被加数
+            - $$ B_4B_3B_2B_1 $$ ：4位加数
+            - $$ C_0 $$ ：进位输入
         - **输出端**：
-            -  $$ \Sigma_4\Sigma_3\Sigma_2\Sigma_1 $$ ：4位和输出
-            -  $$ C_4 $$ ：进位输出
+            - $$ \Sigma_4\Sigma_3\Sigma_2\Sigma_1 $$ ：4位和输出
+            - $$ C_4 $$ ：进位输出
         - **真值表**（单位举例）：
-        
+
         |  $$ A_i $$  |  $$ B_i $$  |  $$ C_i $$  |  $$ \Sigma_i $$  |  $$ C_{i+1} $$  |
         |:-----:|:-----:|:-----:|:----------:|:---------:|
         | 0 | 0 | 0 | 0 | 0 |
@@ -826,34 +837,34 @@ tags:
         | 1 | 0 | 1 | 0 | 1 |
         | 1 | 1 | 0 | 0 | 1 |
         | 1 | 1 | 1 | 1 | 1 |
-        
+
         - **特点**：具有超前进位功能，减少传播延迟
 
     - **7485 - 4位数值比较器**
         - **实际作用**：比较两个4位二进制数的大小关系
         - **输入端**：
-            -  $$ A_3A_2A_1A_0 $$ ：4位数据A
-            -  $$ B_3B_2B_1B_0 $$ ：4位数据B
-            -  $$ I_{A>B}, I_{A=B}, I_{A<B} $$ ：级联输入端
+            - $$ A_3A_2A_1A_0 $$ ：4位数据A
+            - $$ B_3B_2B_1B_0 $$ ：4位数据B
+            - $$ I_{A>B}, I_{A=B}, I_{A<B} $$ ：级联输入端
         - **输出端**：
-            -  $$ O_{A>B}, O_{A=B}, O_{A<B} $$ ：比较结果输出
+            - $$ O_{A>B}, O_{A=B}, O_{A<B} $$ ：比较结果输出
         - **逻辑表达式**：
-            -  $$ O_{A>B} = A_3\overline{B_3} + (A_3 ⊙ B_3)A_2\overline{B_2} + (A_3 ⊙ B_3)(A_2 ⊙ B_2)A_1\overline{B_1} + (A_3 ⊙ B_3)(A_2 ⊙ B_2)(A_1 ⊙ B_1)A_0\overline{B_0} + (A_3 ⊙ B_3)(A_2 ⊙ B_2)(A_1 ⊙ B_1)(A_0 ⊙ B_0)I_{A>B} $$ 
-            -  $$ O_{A=B} = (A_3 ⊙ B_3)(A_2 ⊙ B_2)(A_1 ⊙ B_1)(A_0 ⊙ B_0)I_{A=B} $$ 
-            -  $$ O_{A<B} = \overline{A_3}B_3 + (A_3 ⊙ B_3)\overline{A_2}B_2 + (A_3 ⊙ B_3)(A_2 ⊙ B_2)\overline{A_1}B_1 + (A_3 ⊙ B_3)(A_2 ⊙ B_2)(A_1 ⊙ B_1)\overline{A_0}B_0 + (A_3 ⊙ B_3)(A_2 ⊙ B_2)(A_1 ⊙ B_1)(A_0 ⊙ B_0)I_{A<B} $$ 
+            - $$ O_{A>B} = A_3\overline{B_3} + (A_3 ⊙ B_3)A_2\overline{B_2} + (A_3 ⊙ B_3)(A_2 ⊙ B_2)A_1\overline{B_1} + (A_3 ⊙ B_3)(A_2 ⊙ B_2)(A_1 ⊙ B_1)A_0\overline{B_0} + (A_3 ⊙ B_3)(A_2 ⊙ B_2)(A_1 ⊙ B_1)(A_0 ⊙ B_0)I_{A>B} $$
+            - $$ O_{A=B} = (A_3 ⊙ B_3)(A_2 ⊙ B_2)(A_1 ⊙ B_1)(A_0 ⊙ B_0)I_{A=B} $$
+            - $$ O_{A<B} = \overline{A_3}B_3 + (A_3 ⊙ B_3)\overline{A_2}B_2 + (A_3 ⊙ B_3)(A_2 ⊙ B_2)\overline{A_1}B_1 + (A_3 ⊙ B_3)(A_2 ⊙ B_2)(A_1 ⊙ B_1)\overline{A_0}B_0 + (A_3 ⊙ B_3)(A_2 ⊙ B_2)(A_1 ⊙ B_1)(A_0 ⊙ B_0)I_{A<B} $$
         - **级联使用**：可通过级联输入端连接多个7485实现更多位的比较
 
     - **74LS148 - 8-3线优先编码器**
         - **实际作用**：将8个输入中优先级最高的有效输入编码为3位二进制输出
         - **输入端**：
-            -  $$ \overline{I_7}-\overline{I_0} $$ ：8个数据输入（低电平有效， $$ I_7 $$ 优先级最高）
-            -  $$ \overline{EI} $$ ：使能输入（低电平有效）
+            - $$ \overline{I_7}-\overline{I_0} $$ ：8个数据输入（低电平有效， $$ I_7 $$ 优先级最高）
+            - $$ \overline{EI} $$ ：使能输入（低电平有效）
         - **输出端**：
-            -  $$ \overline{A_2}\overline{A_1}\overline{A_0} $$ ：3位二进制编码输出（低电平有效）
-            -  $$ \overline{GS} $$ ：组选择输出（低电平有效）
-            -  $$ \overline{EO} $$ ：使能输出（低电平有效）
+            - $$ \overline{A_2}\overline{A_1}\overline{A_0} $$ ：3位二进制编码输出（低电平有效）
+            - $$ \overline{GS} $$ ：组选择输出（低电平有效）
+            - $$ \overline{EO} $$ ：使能输出（低电平有效）
         - **真值表**：
-        
+
         |  $$ \overline{EI} $$  |  $$ \overline{I_7} $$  |  $$ \overline{I_6} $$  |  $$ \overline{I_5} $$  |  $$ \overline{I_4} $$  |  $$ \overline{I_3} $$  |  $$ \overline{I_2} $$  |  $$ \overline{I_1} $$  |  $$ \overline{I_0} $$  |  $$ \overline{A_2} $$  |  $$ \overline{A_1} $$  |  $$ \overline{A_0} $$  |  $$ \overline{GS} $$  |  $$ \overline{EO} $$  |
         |:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|
         | 1 | X | X | X | X | X | X | X | X | 1 | 1 | 1 | 1 | 1 |
@@ -866,21 +877,21 @@ tags:
         | 0 | 1 | 1 | 1 | 1 | 1 | 0 | X | X | 1 | 0 | 1 | 0 | 1 |
         | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 0 | X | 1 | 1 | 0 | 0 | 1 |
         | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 0 | 1 | 1 | 1 | 0 | 1 |
-        
+
         - **应用**：中断优先级编码、键盘扫描、优先级仲裁
 
     - **74LS48 - BCD到七段显示译码器**
         - **实际作用**：将BCD码转换为驱动七段数码管的控制信号
         - **输入端**：
-            -  $$ D_3D_2D_1D_0 $$ ：4位BCD码输入
-            -  $$ \overline{LT} $$ ：灯测试输入（低电平有效）
-            -  $$ \overline{RBI} $$ ：前导零消隐输入（低电平有效）
-            -  $$ \overline{BI} $$ ：消隐输入（低电平有效）
+            - $$ D_3D_2D_1D_0 $$ ：4位BCD码输入
+            - $$ \overline{LT} $$ ：灯测试输入（低电平有效）
+            - $$ \overline{RBI} $$ ：前导零消隐输入（低电平有效）
+            - $$ \overline{BI} $$ ：消隐输入（低电平有效）
         - **输出端**：
-            -  $$ a,b,c,d,e,f,g $$ ：七段显示输出（高电平有效）
-            -  $$ \overline{RBO} $$ ：后续零消隐输出（低电平有效）
+            - $$ a,b,c,d,e,f,g $$ ：七段显示输出（高电平有效）
+            - $$ \overline{RBO} $$ ：后续零消隐输出（低电平有效）
         - **真值表**：
-        
+
         |  $$ D_3 $$  |  $$ D_2 $$  |  $$ D_1 $$  |  $$ D_0 $$  |  $$ \overline{LT} $$  |  $$ \overline{RBI} $$  |  $$ \overline{BI} $$  | 显示 | a | b | c | d | e | f | g |  $$ \overline{RBO} $$  |
         |:-----:|:-----:|:-----:|:-----:|:---------------:|:---------------:|:---------------:|:----:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:----------------:|
         | 0 | 0 | 0 | 0 | 1 | 1 | 1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 0 | 1 |
@@ -896,7 +907,7 @@ tags:
         | 0 | 0 | 0 | 0 | 1 | 0 | 1 | 灭 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
         | X | X | X | X | 0 | X | 1 | 8 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
         | X | X | X | X | X | X | 0 | 灭 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
-        
+
         - **特殊功能**：
             - 前导零消隐： $$ \overline{RBI}=0 $$ 且输入为0000时，显示全灭
             - 灯测试： $$ \overline{LT}=0 $$ 时，显示"8"
@@ -905,16 +916,16 @@ tags:
     - **74LS138 - 3-8线译码器**
         - **实际作用**：将3位二进制地址译码为8个输出中的一个
         - **输入端**：
-            -  $$ A_2A_1A_0 $$ ：3位地址输入
-            -  $$ \overline{G_{2A}}, \overline{G_{2B}} $$ ：使能输入（低电平有效）
-            -  $$ G_1 $$ ：使能输入（高电平有效）
+            - $$ A_2A_1A_0 $$ ：3位地址输入
+            - $$ \overline{G_{2A}}, \overline{G_{2B}} $$ ：使能输入（低电平有效）
+            - $$ G_1 $$ ：使能输入（高电平有效）
         - **输出端**：
-            -  $$ \overline{Y_7}-\overline{Y_0} $$ ：8个译码输出（低电平有效）
+            - $$ \overline{Y_7}-\overline{Y_0} $$ ：8个译码输出（低电平有效）
         - **逻辑表达式**：
-            - 使能条件： $$ EN = \overline{G_{2A}} \cdot \overline{G_{2B}} \cdot G_1 $$ 
-            -  $$ \overline{Y_i} = \overline{EN \cdot (A_2A_1A_0 = i)} $$ 
+            - 使能条件： $$ EN = \overline{G_{2A}} \cdot \overline{G_{2B}} \cdot G_1 $$
+            - $$ \overline{Y_i} = \overline{EN \cdot (A_2A_1A_0 = i)} $$
         - **真值表**：
-        
+
         |  $$ \overline{G_{2A}} $$  |  $$ \overline{G_{2B}} $$  |  $$ G_1 $$  |  $$ A_2 $$  |  $$ A_1 $$  |  $$ A_0 $$  |  $$ \overline{Y_7} $$  |  $$ \overline{Y_6} $$  |  $$ \overline{Y_5} $$  |  $$ \overline{Y_4} $$  |  $$ \overline{Y_3} $$  |  $$ \overline{Y_2} $$  |  $$ \overline{Y_1} $$  |  $$ \overline{Y_0} $$  |
         |:------------------:|:------------------:|:-----:|:-----:|:-----:|:-----:|:----------------:|:----------------:|:----------------:|:----------------:|:----------------:|:----------------:|:----------------:|:----------------:|
         | 1 | X | X | X | X | X | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
@@ -928,22 +939,22 @@ tags:
         | 0 | 0 | 1 | 1 | 0 | 1 | 1 | 1 | 0 | 1 | 1 | 1 | 1 | 1 |
         | 0 | 0 | 1 | 1 | 1 | 0 | 1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 |
         | 0 | 0 | 1 | 1 | 1 | 1 | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
-        
+
         - **应用**：地址译码、片选信号产生、存储器译码
 
     - **74LS151 - 8选1数据选择器**
         - **实际作用**：从8路数据输入中选择一路输出
         - **输入端**：
-            -  $$ D_7-D_0 $$ ：8路数据输入
-            -  $$ S_2S_1S_0 $$ ：3位选择控制输入
-            -  $$ \overline{E} $$ ：使能输入（低电平有效）
+            - $$ D_7-D_0 $$ ：8路数据输入
+            - $$ S_2S_1S_0 $$ ：3位选择控制输入
+            - $$ \overline{E} $$ ：使能输入（低电平有效）
         - **输出端**：
-            -  $$ Y $$ ：数据输出
-            -  $$ \overline{Y} $$ ：数据输出的反码
+            - $$ Y $$ ：数据输出
+            - $$ \overline{Y} $$ ：数据输出的反码
         - **逻辑表达式**：
-            -  $$ Y = \overline{E} \cdot (\overline{S_2}\overline{S_1}\overline{S_0}D_0 + \overline{S_2}\overline{S_1}S_0D_1 + \overline{S_2}S_1\overline{S_0}D_2 + \overline{S_2}S_1S_0D_3 + S_2\overline{S_1}\overline{S_0}D_4 + S_2\overline{S_1}S_0D_5 + S_2S_1\overline{S_0}D_6 + S_2S_1S_0D_7) $$ 
+            - $$ Y = \overline{E} \cdot (\overline{S_2}\overline{S_1}\overline{S_0}D_0 + \overline{S_2}\overline{S_1}S_0D_1 + \overline{S_2}S_1\overline{S_0}D_2 + \overline{S_2}S_1S_0D_3 + S_2\overline{S_1}\overline{S_0}D_4 + S_2\overline{S_1}S_0D_5 + S_2S_1\overline{S_0}D_6 + S_2S_1S_0D_7) $$
         - **真值表**：
-        
+
         |  $$ \overline{E} $$  |  $$ S_2 $$  |  $$ S_1 $$  |  $$ S_0 $$  | Y |  $$ \overline{Y} $$  |
         |:--------------:|:-----:|:-----:|:-----:|:-:|:--------------:|
         | 1 | X | X | X | 0 | 1 |
@@ -955,7 +966,7 @@ tags:
         | 0 | 1 | 0 | 1 |  $$ D_5 $$  |  $$ \overline{D_5} $$  |
         | 0 | 1 | 1 | 0 |  $$ D_6 $$  |  $$ \overline{D_6} $$  |
         | 0 | 1 | 1 | 1 |  $$ D_7 $$  |  $$ \overline{D_7} $$  |
-        
+
         - **应用**：数据路由、多路复用、函数发生器
 
     - **74LS153 - 双4选1数据选择器**
@@ -963,15 +974,15 @@ tags:
         - **输入端**：
             - 选择器1： $$ 1D_3, 1D_2, 1D_1, 1D_0 $$ （数据输入）， $$ \overline{1G} $$ （使能）
             - 选择器2： $$ 2D_3, 2D_2, 2D_1, 2D_0 $$ （数据输入）， $$ \overline{2G} $$ （使能）
-            -  $$ S_1S_0 $$ ：公共选择控制输入
+            - $$ S_1S_0 $$ ：公共选择控制输入
         - **输出端**：
-            -  $$ 1Y $$ ：选择器1输出
-            -  $$ 2Y $$ ：选择器2输出
+            - $$ 1Y $$ ：选择器1输出
+            - $$ 2Y $$ ：选择器2输出
         - **逻辑表达式**：
-            -  $$ 1Y = \overline{1G} \cdot (\overline{S_1}\overline{S_0} \cdot 1D_0 + \overline{S_1}S_0 \cdot 1D_1 + S_1\overline{S_0} \cdot 1D_2 + S_1S_0 \cdot 1D_3) $$ 
-            -  $$ 2Y = \overline{2G} \cdot (\overline{S_1}\overline{S_0} \cdot 2D_0 + \overline{S_1}S_0 \cdot 2D_1 + S_1\overline{S_0} \cdot 2D_2 + S_1S_0 \cdot 2D_3) $$ 
+            - $$ 1Y = \overline{1G} \cdot (\overline{S_1}\overline{S_0} \cdot 1D_0 + \overline{S_1}S_0 \cdot 1D_1 + S_1\overline{S_0} \cdot 1D_2 + S_1S_0 \cdot 1D_3) $$
+            - $$ 2Y = \overline{2G} \cdot (\overline{S_1}\overline{S_0} \cdot 2D_0 + \overline{S_1}S_0 \cdot 2D_1 + S_1\overline{S_0} \cdot 2D_2 + S_1S_0 \cdot 2D_3) $$
         - **真值表**（单个选择器）：
-        
+
         |  $$ \overline{G} $$  |  $$ S_1 $$  |  $$ S_0 $$  | Y |
         |:--------------:|:-----:|:-----:|:-:|
         | 1 | X | X | 0 |
@@ -979,7 +990,7 @@ tags:
         | 0 | 0 | 1 |  $$ D_1 $$  |
         | 0 | 1 | 0 |  $$ D_2 $$  |
         | 0 | 1 | 1 |  $$ D_3 $$  |
-        
+
         - **应用**：双路数据选择、时分复用、逻辑函数实现
 
 4. Hazard of Combinational Logic Circuit
@@ -987,22 +998,22 @@ tags:
         - **定义**：由于门电路传播延迟不同，导致输出出现不期望的瞬态脉冲
         - **静态冒险**：输出应该保持稳定，但出现瞬态脉冲
         - **动态冒险**：输出在变化过程中出现多次跳变
-        
+
     - **消除方法**
         - 增加冗余项
         - 使用选通信号
         - 改进电路设计
 
 5. 典型设计实例
-    
+
     **例题1：转换8421BCD码成余三码**
-    
+
     设计一个将8421BCD码转换为余三码的组合逻辑电路。
-    
+
     **解题步骤**：
-    
+
     1. **列出真值表**：
-    
+
     | 十进制 | 8421BCD | 余三码 |
     |:------:|:-------:|:------:|
     |   0    | 0000    | 0011   |
@@ -1015,27 +1026,27 @@ tags:
     |   7    | 0111    | 1010   |
     |   8    | 1000    | 1011   |
     |   9    | 1001    | 1100   |
-    
-    2. **建立逻辑函数**（设输入为ABCD，输出为WXYZ）：
-        -  $$ W = AB + AC + AD + BCD $$ 
-        -  $$ X = \overline{A}B + \overline{A}C + \overline{B}\overline{C} + \overline{A}D $$ 
-        -  $$ Y = \overline{C}D + C\overline{D} $$ 
-        -  $$ Z = \overline{D} $$ 
-    
-    3. **化简后的表达式**：
-        -  $$ W = A + B(C + D) $$ 
-        -  $$ X = \overline{A}(B + C + D) + \overline{B}\overline{C} $$ 
-        -  $$ Y = C ⊕ D $$ 
-        -  $$ Z = \overline{D} $$ 
+
+    1. **建立逻辑函数**（设输入为ABCD，输出为WXYZ）：
+        - $$ W = AB + AC + AD + BCD $$
+        - $$ X = \overline{A}B + \overline{A}C + \overline{B}\overline{C} + \overline{A}D $$
+        - $$ Y = \overline{C}D + C\overline{D} $$
+        - $$ Z = \overline{D} $$
+
+    2. **化简后的表达式**：
+        - $$ W = A + B(C + D) $$
+        - $$ X = \overline{A}(B + C + D) + \overline{B}\overline{C} $$
+        - $$ Y = C ⊕ D $$
+        - $$ Z = \overline{D} $$
 
     **例题2：转换8421码为格雷码**
-    
+
     设计一个将4位8421二进制码转换为格雷码的组合逻辑电路。
-    
+
     **解题步骤**：
-    
+
     1. **列出真值表**：
-    
+
     | 十进制 | 8421码(ABCD) | 格雷码(WXYZ) |
     |:------:|:------------:|:------------:|
     |   0    | 0000         | 0000         |
@@ -1054,50 +1065,50 @@ tags:
     |  13    | 1101         | 1011         |
     |  14    | 1110         | 1001         |
     |  15    | 1111         | 1000         |
-    
-    2. **推导逻辑函数**：
-        -  $$ W = A $$ （最高位保持不变）
-        -  $$ X = A ⊕ B $$ （相邻位异或）
-        -  $$ Y = B ⊕ C $$ 
-        -  $$ Z = C ⊕ D $$ 
-    
-    3. **转换规律**：格雷码 = 二进制码的相邻位异或运算
+
+    1. **推导逻辑函数**：
+        - $$ W = A $$ （最高位保持不变）
+        - $$ X = A ⊕ B $$ （相邻位异或）
+        - $$ Y = B ⊕ C $$
+        - $$ Z = C ⊕ D $$
+
+    2. **转换规律**：格雷码 = 二进制码的相邻位异或运算
 
     **例题3：使用74LS138实现逻辑函数**
-    
+
     使用74LS138实现以下4个逻辑函数：
-    -  $$ F_1 = \overline{A}C + \overline{A}BC + ABC $$ 
-    -  $$ F_2 = BC + \overline{A} \cdot \overline{B}C $$ 
-    -  $$ F_3 = A + \overline{A}BC $$ 
-    -  $$ F_4 = \overline{A}BC + \overline{B} \cdot C + ABC $$ 
-    
+    - $$ F_1 = \overline{A}C + \overline{A}BC + ABC $$
+    - $$ F_2 = BC + \overline{A} \cdot \overline{B}C $$
+    - $$ F_3 = A + \overline{A}BC $$
+    - $$ F_4 = \overline{A}BC + \overline{B} \cdot C + ABC $$
+
     **解题步骤**：
-    
+
     1. **将函数转换为最小项形式**：
-        -  $$ F_1 = \overline{A}C + \overline{A}BC + ABC = \overline{A}\overline{B}C + \overline{A}BC + ABC = m_1 + m_3 + m_7 $$ 
-        -  $$ F_2 = BC + \overline{A}\overline{B}C = \overline{A}BC + ABC + \overline{A}\overline{B}C = m_1 + m_3 + m_7 $$ 
-        -  $$ F_3 = A + \overline{A}BC = ABC + AB\overline{C} + A\overline{B}C + A\overline{B}\overline{C} + \overline{A}BC = m_3 + m_4 + m_5 + m_6 + m_7 $$ 
-        -  $$ F_4 = \overline{A}BC + \overline{B}C + ABC = \overline{A}BC + \overline{A}\overline{B}C + A\overline{B}C + ABC = m_1 + m_3 + m_5 + m_7 $$ 
-    
+        - $$ F_1 = \overline{A}C + \overline{A}BC + ABC = \overline{A}\overline{B}C + \overline{A}BC + ABC = m_1 + m_3 + m_7 $$
+        - $$ F_2 = BC + \overline{A}\overline{B}C = \overline{A}BC + ABC + \overline{A}\overline{B}C = m_1 + m_3 + m_7 $$
+        - $$ F_3 = A + \overline{A}BC = ABC + AB\overline{C} + A\overline{B}C + A\overline{B}\overline{C} + \overline{A}BC = m_3 + m_4 + m_5 + m_6 + m_7 $$
+        - $$ F_4 = \overline{A}BC + \overline{B}C + ABC = \overline{A}BC + \overline{A}\overline{B}C + A\overline{B}C + ABC = m_1 + m_3 + m_5 + m_7 $$
+
     2. **74LS138连接方案**：
-        - 输入端： $$ A_2A_1A_0 = CBA $$ 
-        - 使能端： $$ \overline{G_{2A}} = \overline{G_{2B}} = 0 $$ ， $$ G_1 = 1 $$ 
+        - 输入端： $$ A_2A_1A_0 = CBA $$
+        - 使能端： $$ \overline{G_{2A}} = \overline{G_{2B}} = 0 $$ ， $$ G_1 = 1 $$
         - 输出连接：
-            -  $$ F_1 = \overline{Y_1} \cdot \overline{Y_3} \cdot \overline{Y_7} $$ （需要附加与门）
-            -  $$ F_2 = \overline{Y_1} \cdot \overline{Y_3} \cdot \overline{Y_7} $$ 
-            -  $$ F_3 = \overline{Y_3} \cdot \overline{Y_4} \cdot \overline{Y_5} \cdot \overline{Y_6} \cdot \overline{Y_7} $$ 
-            -  $$ F_4 = \overline{Y_1} \cdot \overline{Y_3} \cdot \overline{Y_5} \cdot \overline{Y_7} $$ 
+            - $$ F_1 = \overline{Y_1} \cdot \overline{Y_3} \cdot \overline{Y_7} $$ （需要附加与门）
+            - $$ F_2 = \overline{Y_1} \cdot \overline{Y_3} \cdot \overline{Y_7} $$
+            - $$ F_3 = \overline{Y_3} \cdot \overline{Y_4} \cdot \overline{Y_5} \cdot \overline{Y_6} \cdot \overline{Y_7} $$
+            - $$ F_4 = \overline{Y_1} \cdot \overline{Y_3} \cdot \overline{Y_5} \cdot \overline{Y_7} $$
 
     **例题4：使用4-1数据选择器实现逻辑函数**
-    
-    使用4-1数据选择器实现： $$ Y = A\overline{B} \cdot \overline{C} + \overline{A} \cdot \overline{C} + BC $$ 
-    
+
+    使用4-1数据选择器实现： $$ Y = A\overline{B} \cdot \overline{C} + \overline{A} \cdot \overline{C} + BC $$
+
     **解题步骤**：
-    
-    1. **选择控制变量**：选择AB作为选择信号 $$ S_1S_0 $$ 
-    
+
+    1. **选择控制变量**：选择AB作为选择信号 $$ S_1S_0 $$
+
     2. **按AB的值分组列出真值表**：
-    
+
     | A | B | C | Y | AB组合 |
     |:-:|:-:|:-:|:-:|:------:|
     | 0 | 0 | 0 | 1 | 00     |
@@ -1108,57 +1119,58 @@ tags:
     | 1 | 0 | 1 | 0 | 10     |
     | 1 | 1 | 0 | 0 | 11     |
     | 1 | 1 | 1 | 1 | 11     |
-    
-    3. **确定数据输入**：
-        - 当AB=00时： $$ Y = 1 $$ （恒为1） →  $$ D_0 = 1 $$ 
-        - 当AB=01时： $$ Y = C $$  →  $$ D_1 = C $$ 
-        - 当AB=10时： $$ Y = \overline{C} $$  →  $$ D_2 = \overline{C} $$ 
-        - 当AB=11时： $$ Y = C $$  →  $$ D_3 = C $$ 
-    
-    4. **连接方案**：
-        - 选择信号： $$ S_1 = A $$ ， $$ S_0 = B $$ 
-        - 数据输入： $$ D_0 = 1 $$ ， $$ D_1 = C $$ ， $$ D_2 = \overline{C} $$ ， $$ D_3 = C $$ 
+
+    1. **确定数据输入**：
+        - 当AB=00时： $$ Y = 1 $$ （恒为1） →  $$ D_0 = 1 $$
+        - 当AB=01时： $$ Y = C $$  →  $$ D_1 = C $$
+        - 当AB=10时： $$ Y = \overline{C} $$  →  $$ D_2 = \overline{C} $$
+        - 当AB=11时： $$ Y = C $$  →  $$ D_3 = C $$
+
+    2. **连接方案**：
+        - 选择信号： $$ S_1 = A $$ ， $$ S_0 = B $$
+        - 数据输入： $$ D_0 = 1 $$ ， $$ D_1 = C $$ ， $$ D_2 = \overline{C} $$ ， $$ D_3 = C $$
 
     **例题5：使用双4-1数据选择器实现多输出函数**
-    
+
     使用双4-1数据选择器实现：
-    -  $$ F_1(A,B,C,D) = \sum m(0,1,5,7,10,13,15) $$ 
-    -  $$ F_2(A,B,C,D) = \sum m(8,10,12,13,15) $$ 
-    
+    - $$ F_1(A,B,C,D) = \sum m(0,1,5,7,10,13,15) $$
+    - $$ F_2(A,B,C,D) = \sum m(8,10,12,13,15) $$
+
     **解题步骤**：
-    
-    1. **选择控制变量**：选择AB作为公共选择信号 $$ S_1S_0 $$ 
-    
-    2. **按AB分组分析 $$ F_1 $$ **：
-    
+
+    1. **选择控制变量**：选择AB作为公共选择信号 $$ S_1S_0 $$
+
+    2. **按AB分组分析 $$ F_1 $$**：
+
     | AB | CD组合 |  $$ F_1 $$ 值 | 对应函数 |
     |:--:|:------:|:-------:|:--------:|
     | 00 | 00,01  | 1,1     |  $$ F_1 = 1 $$  |
     | 01 | 01,11  | 1,1     |  $$ F_1 = \overline{C} \cdot D + C \cdot D = D $$  |
     | 10 | 10,11  | 1,0     |  $$ F_1 = \overline{C} \cdot \overline{D} $$  |
     | 11 | 01,11  | 1,1     |  $$ F_1 = \overline{C} \cdot D + C \cdot D = D $$  |
-    
-    3. **按AB分组分析 $$ F_2 $$ **：
-    
+
+    1. **按AB分组分析 $$ F_2 $$**：
+
     | AB | CD组合 |  $$ F_2 $$ 值 | 对应函数 |
     |:--:|:------:|:-------:|:--------:|
     | 00 | XX     | 0,0     |  $$ F_2 = 0 $$  |
     | 01 | XX     | 0,0     |  $$ F_2 = 0 $$  |
     | 10 | 00,10  | 1,1     |  $$ F_2 = \overline{D} $$  |
     | 11 | 01,11  | 1,1     |  $$ F_2 = \overline{C} \cdot D + C \cdot D = D $$  |
-    
-    4. **74LS153连接方案**：
-        - 公共选择信号： $$ S_1 = A $$ ， $$ S_0 = B $$ 
+
+    1. **74LS153连接方案**：
+        - 公共选择信号： $$ S_1 = A $$ ， $$ S_0 = B $$
         - 选择器1（实现 $$ F_1 $$ ）：
-            -  $$ 1D_0 = 1 $$ ， $$ 1D_1 = D $$ ， $$ 1D_2 = \overline{C} \cdot \overline{D} $$ ， $$ 1D_3 = D $$ 
+            - $$ 1D_0 = 1 $$ ， $$ 1D_1 = D $$ ， $$ 1D_2 = \overline{C} \cdot \overline{D} $$ ， $$ 1D_3 = D $$
         - 选择器2（实现 $$ F_2 $$ ）：
-            -  $$ 2D_0 = 0 $$ ， $$ 2D_1 = 0 $$ ， $$ 2D_2 = \overline{D} $$ ， $$ 2D_3 = D $$ 
+            - $$ 2D_0 = 0 $$ ， $$ 2D_1 = 0 $$ ， $$ 2D_2 = \overline{D} $$ ， $$ 2D_3 = D $$
+
 ## Flip-Flop
 
 1. Definition of Flip-Flop
-    
+
     **触发器基本概念**
-    
+
     - **定义**：触发器是一种具有记忆功能的双稳态时序逻辑电路，能够存储1位二进制信息
     - **基本特性**：
         - **双稳态特性**：具有两个稳定的输出状态（0和1）
@@ -1175,9 +1187,10 @@ tags:
         - 时序逻辑系统
 
 2. R-S Flip-Flop
-    
+
 - **基本R-S触发器 (Basic R-S Latch)**
- <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">     
+
+ <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
     <div style="flex: 1;">
         <ul>
             <li><strong>电路结构</strong>：由两个交叉耦合的NOR门或NAND门构成</li>
@@ -1214,16 +1227,17 @@ tags:
 </div>
 
 - **基本R-S触发器真值表（NOR门实现）**：
-    
+
     | R | S |  $$ Q_{n+1} $$  |  $$ \overline{Q_{n+1}} $$  | 说明 |
     |:-:|:-:|:---------:|:-------------------:|:----:|
     | 0 | 0 |  $$ Q_n $$  |  $$ \overline{Q_n} $$  | 保持状态 |
     | 0 | 1 | 1 | 0 | 置位(Set) |
     | 1 | 0 | 0 | 1 | 复位(Reset) |
     | 1 | 1 | 0 | 0 | **禁止状态** |
-    
+
 - **门控R-S锁存器 (Gated R-S Latch)**
-<div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">    
+
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
     <div style="flex: 1;">
         <ul>
             <li><strong>改进设计</strong>：在基本R-S触发器基础上增加时钟控制</li>
@@ -1258,9 +1272,9 @@ tags:
         <img class="shadow" src="/img/in-post/Digital_logic/Flip_Flop/Gated(Clocked)_R-S_Latch.png" width="260">
     </div>
 </div>
-    
+
 - **门控R-S锁存器真值表**：
-    
+
     | CLK | R | S |  $$ Q_{n+1} $$  | 说明 |
     |:---:|:-:|:-:|:---------:|:----:|
     | 0 | X | X |  $$ Q_n $$  | 保持状态 |
@@ -1268,9 +1282,10 @@ tags:
     | 1 | 0 | 1 | 1 | 置位 |
     | 1 | 1 | 0 | 0 | 复位 |
     | 1 | 1 | 1 | ? | 禁止状态 |
-    
+
 - **主从R-S触发器 (Master-Slave R-S Flip-Flop)**
-<div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;"> 
+
+<div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">
     <div style="flex: 1;">
         <ul>
             <li><strong>结构组成</strong>：由两级门控R-S锁存器串联构成
@@ -1305,9 +1320,9 @@ tags:
         <img class="shadow" src="/img/in-post/Digital_logic/Flip_Flop/Master_Slave_R-S_Flip_Flop.png" width="260">
     </div>
 </div>
-    
+
 - **主从R-S触发器工作时序**：
-    
+
     | 时钟状态 | 主锁存器 | 从锁存器 | 输出Q |
     |:--------:|:--------:|:--------:|:-----:|
     | CLK上升沿 | 接收R,S | 保持 | 不变 |
@@ -1315,10 +1330,10 @@ tags:
     | CLK下降沿 | 保持 | 接收主锁存器状态 | 改变 |
     | CLK=0期间 | 保持 | 保持 | 稳定 |
 
-3. D Flip-Flop
-    
+1. D Flip-Flop
+
 - **门控D锁存器 (Gated D Latch)**
-    
+
 <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">  
     <div style="flex: 1;">
       <ul>
@@ -1356,17 +1371,17 @@ tags:
         <img class="shadow" src="/img/in-post/Digital_logic/Flip_Flop/Gated_D_Latch.png" width="260">
     </div>
 </div>
-    
+
 - **门控D锁存器真值表**：
-    
+
     | CLK | D |  $$ Q_{n+1} $$  | 说明 |
     |:---:|:-:|:---------:|:----:|
     | 0 | X |  $$ Q_n $$  | 保持状态 |
     | 1 | 0 | 0 | 输出跟随输入 |
     | 1 | 1 | 1 | 输出跟随输入 |
-    
+
 - **上升沿触发D触发器 (Rising-edge Triggered D Flip-Flop)**
-    
+
 <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">  
     <div style="flex: 1;">
       <ul>
@@ -1405,18 +1420,19 @@ tags:
         <img class="shadow" src="/img/in-post/Digital_logic/Flip_Flop/Rising-edge_triggered_D_Flip-Flop.png" width="260">
     </div>
 </div>
-    
+
 - **边沿触发D触发器特性表**：
-    
+
     | CLK | D |  $$ Q_{n+1} $$  | 说明 |
     |:---:|:-:|:---------:|:----:|
     | ↑ | 0 | 0 | 上升沿触发，Q=D |
     | ↑ | 1 | 1 | 上升沿触发，Q=D |
     | 0,1,↓ | X |  $$ Q_n $$  | 非上升沿时保持 |
 
-4. J-K Flip-Flop
+1. J-K Flip-Flop
+
 - **门控J-K锁存器 (Gated J-K Latch)**
-    
+
 <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">  
     <div style="flex: 1;">
       <ul>
@@ -1452,9 +1468,9 @@ tags:
         <img class="shadow" src="/img/in-post/Digital_logic/Flip_Flop/Gated_J-K_Latch.png" width="260">
     </div>
 </div>
-    
+
 - **J-K锁存器真值表**：
-    
+
     | CLK | J | K |  $$ Q_{n+1} $$  | 说明 |
     |:---:|:-:|:-:|:---------:|:----:|
     | 0 | X | X |  $$ Q_n $$  | 保持状态 |
@@ -1462,8 +1478,9 @@ tags:
     | 1 | 0 | 1 | 0 | 复位 |
     | 1 | 1 | 0 | 1 | 置位 |
     | 1 | 1 | 1 |  $$ \overline{Q_n} $$  | 翻转 |
+
 - **主从J-K触发器 (Master-Slave J-K Flip-Flop)**
-      
+
 <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">  
     <div style="flex: 1;">
     <ul>
@@ -1503,7 +1520,7 @@ tags:
 </div>
 
 - **边沿触发J-K触发器 (Edge-Triggered J-K Flip-Flop)**
-    
+
 <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">  
     <div style="flex: 1;">
       <ul>
@@ -1539,9 +1556,9 @@ tags:
         <img class="shadow" src="/img/in-post/Digital_logic/Flip_Flop/Edge-Triggered_J-K_Flip-Flop.png" width="260">
     </div>
 </div>
-    
+
 - **边沿触发J-K触发器特性表**：
-    
+
     | CLK | J | K |  $$ Q_{n+1} $$  | 功能 |
     |:---:|:-:|:-:|:---------:|:----:|
     | ↑ | 0 | 0 |  $$ Q_n $$  | 保持 |
@@ -1550,9 +1567,10 @@ tags:
     | ↑ | 1 | 1 |  $$ \overline{Q_n} $$  | 翻转 |
     | 其他 | X | X |  $$ Q_n $$  | 保持 |
 
-5. Integrated Flip-Flop
+1. Integrated Flip-Flop
+
 - **集成D触发器 (Integrated D Flip-Flop)**
-    
+
 <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">    <div style="flex: 1;">
       <ul>
         <li><strong>典型器件</strong>：74LS74、74HC74等</li>
@@ -1586,9 +1604,9 @@ tags:
         <img class="shadow" src="/img/in-post/Digital_logic/Flip_Flop/Integrated_D_Flip-Flop.png" width="260">
     </div>
 </div>
-    
+
 - **集成D触发器完整功能表**：
-    
+
     |  $$ \overline{PR} $$  |  $$ \overline{CLR} $$  | CLK | D | Q |  $$ \overline{Q} $$  | 说明 |
     |:---------------:|:----------------:|:---:|:-:|:-:|:--------------:|:----:|
     | 0 | 1 | X | X | 1 | 0 | 异步预置 |
@@ -1597,8 +1615,9 @@ tags:
     | 1 | 1 | ↑ | 0 | 0 | 1 | 同步清零 |
     | 1 | 1 | ↑ | 1 | 1 | 0 | 同步置位 |
     | 1 | 1 | 其他 | X |  $$ Q_n $$  |  $$ \overline{Q_n} $$  | 保持状态 |
+
 - **集成J-K触发器 (Integrated J-K Flip-Flop)**
-    
+
 <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">  
     <div style="flex: 1;">
       <ul>
@@ -1633,7 +1652,7 @@ tags:
 </div>
 
 - **集成T触发器 (Integrated T Flip-Flop)**
-    
+
 <div style="display: flex; align-items: flex-start; gap: 20px; margin-top: 20px;">  
     <div style="flex: 1;">
       <ul>
@@ -1662,52 +1681,52 @@ tags:
             </ul>
         </li>
     </ul>
-    </div> 
+    </div>
     <div style="flex: 0 0 300px;">
         <img class="shadow" src="/img/in-post/Digital_logic/Flip_Flop/Integrated_T_Flip-Flop.png" width="260">
     </div>
 </div>
-    
+
 - **T触发器特性表**：
-    
+
     | CLK | T |  $$ Q_{n+1} $$  | 说明 |
     |:---:|:-:|:---------:|:----:|
     | ↑ | 0 |  $$ Q_n $$  | 保持状态 |
     | ↑ | 1 |  $$ \overline{Q_n} $$  | 翻转状态 |
     | 其他 | X |  $$ Q_n $$  | 保持状态 |
 
-6. Conversion Between Flip-Flop
-    
+1. Conversion Between Flip-Flop
+
 - **触发器类型转换原理**
-    
+
     触发器之间的转换是通过在目标触发器的输入端增加适当的组合逻辑电路来实现的。转换的核心是使目标触发器的特性表与所需触发器的特性表相匹配。
-    
+
 - **D触发器转换为其他类型**
-    
+
     | 目标类型 | 转换电路 | 逻辑表达式 | 说明 |
     |:--------:|:--------:|:----------:|:----:|
     | **T触发器** | D = T⊕Q |  $$ D = T \oplus Q_n $$  | T=1时翻转，T=0时保持 |
     | **J-K触发器** | D = JQ̄+K̄Q |  $$ D = J\overline{Q_n} + \overline{K}Q_n $$  | 实现J-K的完整功能 |
     | **R-S触发器** | D = S+R̄Q |  $$ D = S + \overline{R}Q_n $$  | S置位，R复位 |
-    
+
     **J-K触发器转换为其他类型**
-    
+
     | 目标类型 | 转换电路 | 逻辑表达式 | 说明 |
     |:--------:|:--------:|:----------:|:----:|
     | **D触发器** | J=D, K=D̄ |  $$ J = D, K = \overline{D} $$  | 最简单的转换 |
     | **T触发器** | J=T, K=T |  $$ J = K = T $$  | 直接连接实现 |
     | **R-S触发器** | J=S, K=R |  $$ J = S, K = R $$  | 功能对应关系 |
-    
+
 - **转换设计步骤**：
-    
+
     1. **列出目标触发器的特性表**
     2. **列出现有触发器的特性表**  
     3. **建立转换真值表**
     4. **设计输入逻辑电路**
     5. **验证转换正确性**
-    
+
 - **转换实例：D触发器实现J-K功能**
-    
+
     |  $$ Q_n $$  | J | K |  $$ Q_{n+1} $$  | D |
     |:-----:|:-:|:-:|:---------:|:-:|
     | 0 | 0 | 0 | 0 | 0 |
@@ -1718,11 +1737,11 @@ tags:
     | 1 | 0 | 1 | 0 | 0 |
     | 1 | 1 | 0 | 1 | 1 |
     | 1 | 1 | 1 | 0 | 0 |
-    
-- **卡诺图化简得到**： $$ D = J\overline{Q_n} + \overline{K}Q_n $$ 
-    
+
+- **卡诺图化简得到**： $$ D = J\overline{Q_n} + \overline{K}Q_n $$
+
 - **触发器选择指南**：
-    
+
     | 应用场合 | 推荐类型 | 原因 |
     |:--------:|:--------:|:----:|
     | **数据寄存器** | D触发器 | 输入输出关系简单明确 |

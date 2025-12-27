@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source "https://gems.ruby-china.com"
 
 # 使用 GitHub Pages 官方 gem，它会自动管理 Jekyll 版本
 gem "github-pages", "~> 228", group: :jekyll_plugins
