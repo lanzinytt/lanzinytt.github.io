@@ -4,7 +4,7 @@ title: "数据结构与算法PPT记忆点整理.25"
 subtitle: ' "Data Structures and Algorithms"'
 date: 2025-12-27 17:00:00
 author: "LanZinYtt"
-header-img: ""
+header-img: "img/in-post/Data_Structures_and_Algorithms/header.jpg"
 catalog: true
 tags:
   - Computer_Science_Specialized_Courses
