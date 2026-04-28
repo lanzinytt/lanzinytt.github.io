@@ -4,7 +4,7 @@ title:      "JAVA语言程序设计.25"
 subtitle:   " \"Java_Programming\""
 date:       2025-12-20 15:00:00
 author:     "LanZinYtt"
-header-img: "img/in-post/Java_Programming/header.jpg"
+header-img: "img/in-post/Java_Programming/Java_Programming_header.jpg"
 catalog: true
 tags:
 
