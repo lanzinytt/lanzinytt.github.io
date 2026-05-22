@@ -84,7 +84,6 @@ fetch('http://api.other-domain.com/data')  // 这是一个跨域请求
 
 **场景 1：XSS 攻击**
 
-```
 用户访问 → https://bank.com (真实的银行网站)
      ↓
 网页中有恶意 JS 代码（比如通过 XSS 漏洞注入）
@@ -92,13 +91,11 @@ fetch('http://api.other-domain.com/data')  // 这是一个跨域请求
 恶意代码执行：fetch('https://attacker.com/steal-data')
      ↓
 银行网站的敏感数据（Session、Cookies、DOM内容）被发送给攻击者
-```
 
 如果没有同源策略，恶意代码可以任意读取银行网站的 Cookie、LocalStorage，甚至是 DOM 内容中的用户隐私信息。
 
 **场景 2：Session 劫持**
 
-```
 用户已登录于 → https://facebook.com (已有认证 Cookie)
      ↓
 访问恶意网站 → https://attacker.com
@@ -108,11 +105,9 @@ fetch('http://api.other-domain.com/data')  // 这是一个跨域请求
         { credentials: 'include' })  // 自动携带 Facebook 的 Cookie
      ↓
 如果没有 CORS 保护，就能获取用户的 Facebook 个人信息
-```
 
 **场景 3：数据盗取**
 
-```
 用户在公司内网访问 → https://internal-system.company.com
      ↓
 访问了恶意网站 → https://evil.com
@@ -121,14 +116,11 @@ fetch('http://api.other-domain.com/data')  // 这是一个跨域请求
   fetch('https://internal-system.company.com/api/employees')
      ↓
 公司内网的敏感数据（员工信息、薪资等）被窃取
-```
-
 #### 1.3.2 同源策略的两层防控
 
 同源策略通过两层防控来保护用户：
 
 **第一层：浏览器发送请求前的检查**
-```
 JavaScript 线程
     ↓
 [检查目标域名] 是否与当前页面同源？
@@ -136,10 +128,8 @@ JavaScript 线程
   不同源? → 直接阻止，不发送请求
      ↓
   同源? → 允许发送
-```
 
 **第二层：浏览器收到响应后的检查**
-```
 网络请求返回响应
     ↓
 [检查响应头] Access-Control-Allow-Origin 是否包含当前源？
@@ -148,7 +138,6 @@ JavaScript 线程
            （但服务器已经收到请求并处理了）
      ↓
   匹配? → 允许 JS 代码访问响应数据
-```
 
 #### 1.3.3 关键点理解
 
@@ -169,10 +158,8 @@ JavaScript 线程
    ```
 
 3. **这不是网络限制，是浏览器的策略**
-   ```
    服务器端-to-服务器端通信  ✅ 无限制（比如用 Node.js 调用其他 API）
    浏览器-to-服务器通信     ❌ 受同源策略限制
-   ```
 
 ### 1.4 同源策略会引发什么问题？
 
