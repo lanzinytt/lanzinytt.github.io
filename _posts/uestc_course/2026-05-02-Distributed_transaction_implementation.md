@@ -19,6 +19,8 @@ tags:
 - 一个统一的样例如何套到各个方案里
 
 部分内容参考b站视频[【18分钟彻底掌握分布式事务（7种解决方案+Seata实战演示）】](https://www.bilibili.com/video/BV1XtMyznEnb/?share_source=copy_web&vd_source=a3560efa9a9d50c40d751bb3688adbe4)
+
+![alt text](/img/in-post/Distributed_transaction_implementation/Distributed_transaction_implementation.png)
 ## 1. 分布式事务要解决什么问题
 
 核心目标通常有两个：
