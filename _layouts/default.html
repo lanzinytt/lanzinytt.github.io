@@ -31,6 +31,14 @@
       inlineMath: [ ['$','$'] ],
       displayMath: [ ['$$','$$'] ],
       processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      ignoreClass: 'highlight|prettyprint|language-|no-mathjax',
+      processClass: 'mathjax|post-container|page-container'
+    },
+    messageStyle: 'none',
+    showProcessingMessages: false,
+    "HTML-CSS": {
+      availableFonts: ["TeX"]
     }
   });
 </script>
