@@ -2,7 +2,7 @@
 layout:     post
 title:      "机器学习_Part1.26"
 subtitle:   " \"Machine_Learning\""
-date:       2025-12-20 15:00:00
+date:       2026-5-25 14:00:00
 author:     "LanZinYtt"
 header-img: "img/in-post/"
 catalog: true
@@ -63,28 +63,18 @@ tags:
 
 由混淆矩阵可以引出若干常见评价指标：
 - **P（Precision，查准率）**：预测为正的样本中，真正为正的比例
-    $$
-    P = \frac{TP}{TP + FP}
-    $$
+- $ P = \frac{TP}{TP + FP} $
 - **R（Recall，召回率）**：实际为正的样本中，被正确预测为正的比例
-    $$
-    R = \frac{TP}{TP + FN}
-    $$
+- $ R = \frac{TP}{TP + FN} $
 ![alt text](/img/in-post/Machine_Learning/P-R_curve_and_equilibrium_point_schematic_diagram.jpg)
 - **TPR（True Positive Rate，真正例率）**：本质上与召回率相同
-    $$
-    TPR = \frac{TP}{TP + FN} = R
-    $$
+- $ TPR = \frac{TP}{TP + FN} = R $
 - **FPR（False Positive Rate，假正例率）**：实际为反的样本中，被错误预测为正的比例
-    $$
-    FPR = \frac{FP}{FP + TN}
-    $$
+- $ FPR = \frac{FP}{FP + TN} $
 ![alt text](/img/in-post/Machine_Learning/C_curve.jpg)
 ![alt text](/img/in-post/Machine_Learning/How_To_Draw_C_curve.png)
 - **F1 值**：查准率与召回率的调和平均，更适合综合衡量二者
-    $$
-    F1 = \frac{2PR}{P + R} = \frac{2TP}{2TP + FP + FN}
-    $$
+- $ F1 = \frac{2PR}{P + R} = \frac{2TP}{2TP + FP + FN} $
 
 - 若模型需要尽量减少“误报”，则应关注 **Precision / FPR**
 - 若模型需要尽量减少“漏报”，则应关注 **Recall / TPR**
@@ -138,13 +128,9 @@ tags:
 **基础线性模型**
 
 - 一般形式：
-    $$
-    f(x) = w_1 x_1 + w_2 x_2 + \cdots + w_d x_d + b
-    $$
+    - $ f(x) = w_1 x_1 + w_2 x_2 + \cdots + w_d x_d + b $
 - 向量形式：
-    $$
-    f(\mathbf{x}) = \mathbf{w}^T \mathbf{x} + b
-    $$
+    - $ f(\mathbf{x}) = \mathbf{w}^T \mathbf{x} + b $
     其中 $\mathbf{x} = (x_1, x_2, \dots, x_d)^T$，$\mathbf{w} = (w_1, w_2, \dots, w_d)^T$，$b$ 为偏置项。
 
 线性模型的优点：
@@ -161,15 +147,11 @@ tags:
 
 设样本真实值为 $y_i$，预测值为 $f(x_i)$，则最小二乘法的目标是最小化平方误差和：
 
-$$
-\min_{\mathbf{w}, b} \sum_{i=1}^{m} \left( f(x_i) - y_i \right)^2
-$$
+- $ \min_{\mathbf{w}, b} \sum_{i=1}^{m} \left( f(x_i) - y_i \right)^2 $
 
 在线性模型下可写为：
 
-$$
-\min_{\mathbf{w}, b} \sum_{i=1}^{m} \left( \mathbf{w}^T \mathbf{x}_i + b - y_i \right)^2
-$$
+- $ \min_{\mathbf{w}, b} \sum_{i=1}^{m} \left( \mathbf{w}^T \mathbf{x}_i + b - y_i \right)^2 $
 
 - 等价于欧式距离的平分，易于理解
 - 凸函数，有全局最优解
@@ -180,56 +162,42 @@ $$
 
 在最小二乘法基础上加入 $L_2$ 正则项：
 
-$$
-\min_{\mathbf{w}} \; (\mathbf{Xw} - \mathbf{y})^T (\mathbf{Xw} - \mathbf{y}) + \lambda \mathbf{w}^T \mathbf{w}
-$$
+- $ \min_{\mathbf{w}} \; (\mathbf{Xw} - \mathbf{y})^T (\mathbf{Xw} - \mathbf{y}) + \lambda \mathbf{w}^T \mathbf{w} $
 
 对目标函数关于 $\mathbf{w}$ 求导并令其为 $0$：
 
-$$
-2\mathbf{X}^T(\mathbf{Xw} - \mathbf{y}) + 2\lambda \mathbf{w} = 0
-$$
+- $ 2\mathbf{X}^T(\mathbf{Xw} - \mathbf{y}) + 2\lambda \mathbf{w} = 0 $
 
 整理得：
 
-$$
-(\mathbf{X}^T\mathbf{X} + \lambda \mathbf{I})\mathbf{w} = \mathbf{X}^T\mathbf{y}
-$$
+- $ (\mathbf{X}^T\mathbf{X} + \lambda \mathbf{I})\mathbf{w} = \mathbf{X}^T\mathbf{y} $
 
 故闭式解为：
 
-$$
-\mathbf{w} = (\mathbf{X}^T\mathbf{X} + \lambda \mathbf{I})^{-1} \mathbf{X}^T\mathbf{y}
-$$
+- $ \mathbf{w} = (\mathbf{X}^T\mathbf{X} + \lambda \mathbf{I})^{-1} \mathbf{X}^T\mathbf{y} $
 
 - 对数几率回归 - 极大似然法：
 
 设
 $$
-P(y=1|\mathbf{x}) = \frac{1}{1 + e^{-(\mathbf{w}^T\mathbf{x}+b)}}
+P(y=1\mid\mathbf{x}) = \frac{1}{1 + e^{-(\mathbf{w}^T\mathbf{x}+b)}}
 $$
 
 则通过极大化训练数据的似然函数来估计参数，即：
 
-$$
-L(\mathbf{w},b) = \prod_{i=1}^{m} p_i^{y_i}(1-p_i)^{1-y_i}
-$$
+- $ L(\mathbf{w},b) = \prod_{i=1}^{m} p_i^{y_i}(1-p_i)^{1-y_i} $
 
 通常转为最大化对数似然：
 
-$$
-\ell(\mathbf{w},b) = \sum_{i=1}^{m} \left[y_i \ln p_i + (1-y_i) \ln(1-p_i)\right]
-$$
+- $ \ell(\mathbf{w},b) = \sum_{i=1}^{m} \left[y_i \ln p_i + (1-y_i) \ln(1-p_i)\right] $
 
-其中 $p_i = P(y=1|\mathbf{x}_i)$。
+其中 $p_i = P(y=1\mid\mathbf{x}_i)$。
 
 **梯度下降**
 
 - 基本思想：沿目标函数梯度的反方向迭代更新参数，使损失函数不断减小
 更新公式：
-$$
-\mathbf{w} \leftarrow \mathbf{w} - \eta \nabla J(\mathbf{w})
-$$
+- $ \mathbf{w} \leftarrow \mathbf{w} - \eta \nabla J(\mathbf{w}) $
 
 - **批量梯度下降（BGD）**
 
@@ -245,9 +213,7 @@ $$
 
 - 可将二分类器推广到多分类任务，常见方法有 **一对一（OvO）** 和 **一对其余（OvR）**
 - 也可直接使用 **Softmax 回归**，对多个类别的概率进行统一建模
-    $$
-    L = -\sum_{k=1}^{K} y_k \ln p_k
-    $$
+    - $ L = -\sum_{k=1}^{K} y_k \ln p_k $
 
 **LDA**
 - **LDA的思想**：寻找一个投影方向，使类内方差尽可能小、类间方差尽可能大，从而使不同类别在低维空间中尽量分开
@@ -263,33 +229,23 @@ $$
 **模型结构**
 
 - 线性组合加符号函数构成：
-    $$
-    f(\mathbf{x}) = \operatorname{sign}(\mathbf{w}^T\mathbf{x} + b)
-    $$
+    - $ f(\mathbf{x}) = \operatorname{sign}(\mathbf{w}^T\mathbf{x} + b) $
 - 其中 $\mathbf{w}$ 为权重向量，$b$ 为偏置，$\mathbf{w}^T\mathbf{x} + b = 0$ 对应分类超平面
 
 **训练策略**
 
 - 基本思想：寻找能够将训练样本正确划分的超平面
 - 只对误分类样本更新参数，若样本 $(\mathbf{x}_i, y_i)$ 被误分类，则
-    $$
-    \mathbf{w} \leftarrow \mathbf{w} + \eta y_i \mathbf{x}_i
-    $$
-    $$
-    b \leftarrow b + \eta y_i
-    $$
+    - $ \mathbf{w} \leftarrow \mathbf{w} + \eta y_i \mathbf{x}_i $
+    - $ b \leftarrow b + \eta y_i $
 - 其中 $\eta > 0$ 为学习率；若训练集线性可分，感知机算法可在有限步内收敛（**迭代收敛性**）
 
 **学习算法的对偶形式**
 
 - 设每个样本被误分类的更新次数为 $\alpha_i$，则权重向量可表示为
-    $$
-    \mathbf{w} = \sum_{i=1}^{m} \alpha_i y_i \mathbf{x}_i
-    $$
+    - $ \mathbf{w} = \sum_{i=1}^{m} \alpha_i y_i \mathbf{x}_i $
 - 因此判别函数可写为
-    $$
-    f(\mathbf{x}) = \operatorname{sign}\left(\sum_{i=1}^{m} \alpha_i y_i (\mathbf{x}_i^T\mathbf{x}) + b\right)
-    $$
+    - $ f(\mathbf{x}) = \operatorname{sign}\left(\sum_{i=1}^{m} \alpha_i y_i (\mathbf{x}_i^T\mathbf{x}) + b\right) $
 - 对偶形式的特点是参数更新只依赖样本之间的内积，适合结合 Gram 矩阵进行计算
 
 ## 支持向量机
@@ -300,45 +256,31 @@ $$
 
 设分类超平面为：
 
-$$
-\mathbf{w}^T\mathbf{x} + b = 0
-$$
+- $ \mathbf{w}^T\mathbf{x} + b = 0 $
 
 其中，$\mathbf{w}$ 为法向量，决定超平面的方向；$b$ 为偏置，决定超平面与原点的距离。
 
 对于任一样本 $(\mathbf{x}_i, y_i)$，其中 $y_i \in \{+1,-1\}$，分类决策函数可写为：
 
-$$
-f(\mathbf{x}) = \operatorname{sign}(\mathbf{w}^T\mathbf{x} + b)
-$$
+- $ f(\mathbf{x}) = \operatorname{sign}(\mathbf{w}^T\mathbf{x} + b) $
 
 SVM约束优化问题（三要素）
 - **优化条件**：决策面方程如何定义，即用超平面
-    $$
-    \mathbf{w}^T\mathbf{x} + b = 0
-    $$
+    - $ \mathbf{w}^T\mathbf{x} + b = 0 $
     作为分类边界。
 - **目标函数**：分类间隔最大化。几何间隔可写为
-    $$
-    \gamma = \frac{y_i(\mathbf{w}^T\mathbf{x}_i+b)}{\|\mathbf{w}\|}
-    $$
+    - $ \gamma = \frac{y_i(\mathbf{w}^T\mathbf{x}_i+b)}{\lVert \mathbf{w} \rVert} $
     当采用规范化条件 $y_i(\mathbf{w}^T\mathbf{x}_i+b) \ge 1$ 时，间隔最大化等价于最小化
-    $$
-    \frac{1}{2}\|\mathbf{w}\|^2
-    $$
+    - $ \frac{1}{2}\lVert \mathbf{w} \rVert^2 $
 - **约束条件**：所有样本被正确分类，即满足
-    $$
-    y_i(\mathbf{w}^T\mathbf{x}_i+b) \ge 1, \quad i=1,2,\dots,m
-    $$
+    $ y_i(\mathbf{w}^T\mathbf{x}_i+b) \ge 1, \quad i=1,2,\dots,m $
 
 因此，**线性可分支持向量机（硬间隔）** 的优化问题可写为：
 
-$$
-\begin{aligned}
+$ \begin{aligned}
 \min_{\mathbf{w},b} \quad & \frac{1}{2}\|\mathbf{w}\|^2 \\
-	ext{s.t.} \quad & y_i(\mathbf{w}^T\mathbf{x}_i+b) \ge 1, \quad i=1,2,\dots,m
-\end{aligned}
-$$
+    ext{s.t.} \quad & y_i(\mathbf{w}^T\mathbf{x}_i+b) \ge 1, \quad i=1,2,\dots,m
+\end{aligned} $
 
 其含义是：在保证训练样本被正确分类的前提下，使分类间隔最大。
 
@@ -346,37 +288,25 @@ $$
 
 - 由于 SVM 是一个带不等式约束的凸二次规划问题，直接求解原始问题有时不够方便，因此常将它转化为对偶问题来求解。
 - 对硬间隔 SVM，引入拉格朗日乘子 $\alpha_i \ge 0$，构造拉格朗日函数：
-    $$
-    L(\mathbf{w},b,\boldsymbol{\alpha}) = \frac{1}{2}\|\mathbf{w}\|^2 - \sum_{i=1}^{m} \alpha_i \left[y_i(\mathbf{w}^T\mathbf{x}_i+b)-1\right]
-    $$
+    - $ L(\mathbf{w},b,\boldsymbol{\alpha}) = \frac{1}{2}\lVert \mathbf{w} \rVert^2 - \sum_{i=1}^{m} \alpha_i \left[y_i(\mathbf{w}^T\mathbf{x}_i+b)-1\right] $
 - 分别对 $\mathbf{w}$ 和 $b$ 求偏导并令其为 $0$：
-    $$
-    \frac{\partial L}{\partial \mathbf{w}} = \mathbf{w} - \sum_{i=1}^{m} \alpha_i y_i \mathbf{x}_i = 0
-    $$
-    $$
-    \frac{\partial L}{\partial b} = -\sum_{i=1}^{m}\alpha_i y_i = 0
-    $$
+    - $ \frac{\partial L}{\partial \mathbf{w}} = \mathbf{w} - \sum_{i=1}^{m} \alpha_i y_i \mathbf{x}_i = 0 $
+    - $ \frac{\partial L}{\partial b} = -\sum_{i=1}^{m}\alpha_i y_i = 0 $
 - 因而可得：
-    $$
-    \mathbf{w} = \sum_{i=1}^{m}\alpha_i y_i \mathbf{x}_i, \qquad \sum_{i=1}^{m}\alpha_i y_i = 0
-    $$
+    - $ \mathbf{w} = \sum_{i=1}^{m}\alpha_i y_i \mathbf{x}_i, \qquad \sum_{i=1}^{m}\alpha_i y_i = 0 $
 - 将其代回原式，可得到对偶问题：
-    $$
-    \begin{aligned}
+    $ \begin{aligned}
     \max_{\boldsymbol{\alpha}} \quad & \sum_{i=1}^{m}\alpha_i - \frac{1}{2}\sum_{i=1}^{m}\sum_{j=1}^{m}\alpha_i\alpha_j y_i y_j\mathbf{x}_i^T\mathbf{x}_j \\
     	ext{s.t.} \quad & \alpha_i \ge 0, \quad i=1,2,\dots,m \\
     & \sum_{i=1}^{m}\alpha_i y_i = 0
-    \end{aligned}
-    $$
+    \end{aligned} $
 
 **SMO 算法的使用**
 
 - 上述对偶问题本质上是一个二次规划问题。若直接调用通用二次规划方法，在样本较多时计算代价较高。
 - **SMO（Sequential Minimal Optimization，序列最小最优化）** 是 SVM 中最经典的求解算法之一，它的核心思想是：**每次只选择两个拉格朗日乘子 $\alpha_i, \alpha_j$ 进行优化，其余变量保持不变**。
 - 之所以每次选两个变量，是因为对偶问题存在约束
-    $$
-    \sum_{i=1}^{m}\alpha_i y_i = 0
-    $$
+    $ \sum_{i=1}^{m}\alpha_i y_i = 0 $
     若只更新一个变量，很难同时满足该等式约束；更新两个变量则可以在满足约束的同时进行局部解析求解。
 - SMO 的基本流程可以概括为：
     - 先选取一个违反 KKT 条件的样本对应的 $\alpha_i$；
@@ -391,23 +321,17 @@ $$
 
 - SVM 是凸优化问题，满足条件时原问题与对偶问题最优值相等，因此可通过解对偶问题得到原问题最优解。
 - 最优解需满足 KKT 条件：
-    $$
-    \alpha_i \ge 0, \qquad y_i(\mathbf{w}^T\mathbf{x}_i+b)-1 \ge 0
-    $$
-    $$
-    \alpha_i\left[y_i(\mathbf{w}^T\mathbf{x}_i+b)-1\right] = 0
-    $$
+    - $ \alpha_i \ge 0, \qquad y_i(\mathbf{w}^T\mathbf{x}_i+b)-1 \ge 0 $
+    - $ \alpha_i\left[y_i(\mathbf{w}^T\mathbf{x}_i+b)-1\right] = 0 $
 - 这说明只有部分样本对应的 $\alpha_i > 0$，这些样本就是**支持向量**；也就是说，最终分类超平面只由少数关键样本决定。
 
 当训练集不是完全线性可分时，引入松弛变量 $\xi_i \ge 0$，允许少量样本不满足硬间隔约束，这就得到**软间隔支持向量机**：
 
-$$
-\begin{aligned}
+$ \begin{aligned}
 \min_{\mathbf{w},b,\boldsymbol{\xi}} \quad & \frac{1}{2}\|\mathbf{w}\|^2 + C\sum_{i=1}^{m}\xi_i \\
-	ext{s.t.} \quad & y_i(\mathbf{w}^T\mathbf{x}_i+b) \ge 1-\xi_i, \quad i=1,2,\dots,m \\
+    ext{s.t.} \quad & y_i(\mathbf{w}^T\mathbf{x}_i+b) \ge 1-\xi_i, \quad i=1,2,\dots,m \\
 & \xi_i \ge 0, \quad i=1,2,\dots,m
-\end{aligned}
-$$
+\end{aligned} $
 
 其中，$C>0$ 为惩罚参数：
 - $C$ 较大时，对分类错误惩罚更强，模型更强调训练集上的正确分类；
@@ -424,47 +348,29 @@ $$
 **核支持向量机**
 
 - 当样本在原始空间中线性不可分时，可以将输入从原空间映射到更高维特征空间：
-    $$
-    \phi(\mathbf{x})
-    $$
+    - $ \phi(\mathbf{x}) $
     再在高维空间中构造线性分类面。
 - 此时分类函数写为：
-    $$
-    f(\mathbf{x}) = \operatorname{sign}(\mathbf{w}^T\phi(\mathbf{x}) + b)
-    $$
+    - $ f(\mathbf{x}) = \operatorname{sign}(\mathbf{w}^T\phi(\mathbf{x}) + b) $
 - 由于对偶问题中只涉及样本间内积，因此只要把内积
-    $$
-    \mathbf{x}_i^T\mathbf{x}_j
-    $$
+    - $ \mathbf{x}_i^T\mathbf{x}_j $
     替换成核函数
-    $$
-    K(\mathbf{x}_i,\mathbf{x}_j) = \phi(\mathbf{x}_i)^T\phi(\mathbf{x}_j)
-    $$
+    - $ K(\mathbf{x}_i,\mathbf{x}_j) = \phi(\mathbf{x}_i)^T\phi(\mathbf{x}_j) $
     就能避免显式计算高维映射，这称为**核技巧**。
 
 于是，核支持向量机的决策函数可写为：
 
-$$
-f(\mathbf{x}) = \operatorname{sign}\left(\sum_{i=1}^{m}\alpha_i y_i K(\mathbf{x}_i,\mathbf{x}) + b\right)
-$$
+- $ f(\mathbf{x}) = \operatorname{sign}\left(\sum_{i=1}^{m}\alpha_i y_i K(\mathbf{x}_i,\mathbf{x}) + b\right) $
 
 常见核函数有：
 - **线性核**
-    $$
-    K(\mathbf{x},\mathbf{z}) = \mathbf{x}^T\mathbf{z}
-    $$
+    - $ K(\mathbf{x},\mathbf{z}) = \mathbf{x}^T\mathbf{z} $
 - **多项式核**
-    $$
-    K(\mathbf{x},\mathbf{z}) = (\mathbf{x}^T\mathbf{z} + c)^p
-    $$
+    - $ K(\mathbf{x},\mathbf{z}) = (\mathbf{x}^T\mathbf{z} + c)^p $
 - **高斯核 / RBF 核**
-    $$
-    K(\mathbf{x},\mathbf{z}) = \exp\left(-\frac{\|\mathbf{x}-\mathbf{z}\|^2}{2\sigma^2}\right)
-    $$
+    - $ K(\mathbf{x},\mathbf{z}) = \exp\left(-\frac{\lVert \mathbf{x}-\mathbf{z} \rVert^2}{2\sigma^2}\right) $
 - **Sigmoid 核**
-    $$
-    K(\mathbf{x},\mathbf{z}) = \tanh(\beta\mathbf{x}^T\mathbf{z} + \theta)
-    $$
+    - $ K(\mathbf{x},\mathbf{z}) = \tanh(\beta\mathbf{x}^T\mathbf{z} + \theta) $
 
 核方法的关键意义在于：即使原始空间线性不可分，也能通过核函数隐式地在高维空间完成线性分类。
 
@@ -474,9 +380,7 @@ $$
 - 常见策略有：
     - **一对其余（OvR, One vs Rest）**：对于 $K$ 个类别，训练 $K$ 个二分类器。第 $k$ 个分类器把第 $k$ 类视为正类，其余所有类视为负类。预测时选择输出分数最大的类别。
     - **一对一（OvO, One vs One）**：对于 $K$ 个类别，两两构造二分类器，共需要训练
-        $$
-        \frac{K(K-1)}{2}
-        $$
+        - $ \frac{K(K-1)}{2} $
         个分类器。预测时采用投票法，得票最多的类别作为最终结果。
 - 二者特点：
     - OvR 训练分类器数量较少，结构较简单；
@@ -487,22 +391,18 @@ $$
 
 - 支持向量机不仅可以做分类，也可以推广到回归问题，这就是**支持向量回归（Support Vector Regression, SVR）**。
 - 在回归任务中，不再要求样本被分到正负两类，而是希望预测函数
-    $$
-    f(\mathbf{x}) = \mathbf{w}^T\mathbf{x} + b
-    $$
+    - $ f(\mathbf{x}) = \mathbf{w}^T\mathbf{x} + b $
     尽可能逼近真实输出 $y$。
 - SVR 的基本思想是引入一个容忍范围 $\varepsilon$，若预测值与真实值之差不超过 $\varepsilon$，则认为这部分误差可以接受，不计入损失；只有超出 $\varepsilon$ 的部分才进行惩罚，这对应 **$\varepsilon$-不敏感损失函数**。
 
 其优化问题可写为：
 
-$$
-\begin{aligned}
+$ \begin{aligned}
 \min_{\mathbf{w},b,\xi_i,\xi_i^*} \quad & \frac{1}{2}\|\mathbf{w}\|^2 + C\sum_{i=1}^{m}(\xi_i+\xi_i^*) \\
-	ext{s.t.} \quad & y_i - (\mathbf{w}^T\mathbf{x}_i+b) \le \varepsilon + \xi_i \\
+    ext{s.t.} \quad & y_i - (\mathbf{w}^T\mathbf{x}_i+b) \le \varepsilon + \xi_i \\
 & (\mathbf{w}^T\mathbf{x}_i+b) - y_i \le \varepsilon + \xi_i^* \\
 & \xi_i,\xi_i^* \ge 0, \quad i=1,2,\dots,m
-\end{aligned}
-$$
+\end{aligned} $
 
 其中：
 - $\varepsilon$ 表示可容忍误差范围；
@@ -511,17 +411,13 @@ $$
 
 - 与 SVM 类似，SVR 也可以通过拉格朗日对偶方法求解，并且同样能够引入核函数，从而得到非线性回归模型。
 - SVR 的最终回归函数可写为：
-    $$
-    f(\mathbf{x}) = \sum_{i=1}^{m}(\alpha_i-\alpha_i^*)K(\mathbf{x}_i,\mathbf{x}) + b
-    $$
+    - $ f(\mathbf{x}) = \sum_{i=1}^{m}(\alpha_i-\alpha_i^*)K(\mathbf{x}_i,\mathbf{x}) + b $
 - 其中只有部分样本对应的乘子不为零，这些样本同样称为**支持向量**。
 
 可以把 SVR 理解为：SVM 在分类中追求“最大间隔”，而在回归中追求“在尽量平滑的前提下，让大多数样本点落入宽度为 $2\varepsilon$ 的回归带中”。
 
 最终得到的分类函数仍可写为：
 
-$$
-f(\mathbf{x}) = \operatorname{sign}(\mathbf{w}^T\mathbf{x} + b)
-$$
+- $ f(\mathbf{x}) = \operatorname{sign}(\mathbf{w}^T\mathbf{x} + b) $
 
 距离分类超平面最近的那些样本点称为**支持向量**，它们决定了最终的最优分离超平面。
