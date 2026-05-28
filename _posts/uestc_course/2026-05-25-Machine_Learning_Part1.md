@@ -179,9 +179,7 @@ tags:
 - 对数几率回归 - 极大似然法：
 
 设
-$$
-P(y=1\mid\mathbf{x}) = \frac{1}{1 + e^{-(\mathbf{w}^T\mathbf{x}+b)}}
-$$
+- $ P(y=1\mid\mathbf{x}) = \frac{1}{1 + e^{-(\mathbf{w}^T\mathbf{x}+b)}} $
 
 则通过极大化训练数据的似然函数来估计参数，即：
 
@@ -339,9 +337,7 @@ $ \begin{aligned}
 
 软间隔情形下，也可以通过拉格朗日对偶得到类似的二次规划问题，只不过约束会变为：
 
-$$
-0 \le \alpha_i \le C, \quad i=1,2,\dots,m
-$$
+- $ 0 \le \alpha_i \le C, \quad i=1,2,\dots,m $
 
 这说明惩罚参数 $C$ 同时限制了每个样本对应乘子的取值范围。
 

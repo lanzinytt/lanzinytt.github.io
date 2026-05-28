@@ -80,13 +80,11 @@ tags:
 - ReLu
 
 - $ \operatorname{ReLU}(x) = \max(0,x) $
-$$
-\operatorname{ReLU}'(x) =
+- $ \operatorname{ReLU}'(x) =
 \begin{cases}
 1, & x>0 \\
 0, & x<0
-\end{cases}
-$$
+\end{cases} $
 
 - 交叉熵损失
 
@@ -94,9 +92,7 @@ $$
 
 - KL散度
 
-$$
-D_{KL}(P\mathrel{\Vert}Q) = \sum_{x} P(x)\log \frac{P(x)}{Q(x)} = D_{KL}(p\mathrel{\Vert}q) = H(p,q) - H(p)
-$$
+- $ D_{KL}(P\mathrel{\Vert}Q) = \sum_{x} P(x)\log \frac{P(x)}{Q(x)} = D_{KL}(p\mathrel{\Vert}q) = H(p,q) - H(p) $
 
 ### 人工智能与神经网络
 
@@ -238,9 +234,7 @@ $$
 
 从数学上看，若输入特征图记为矩阵 $X$，卷积核记为矩阵 $W$，则二维卷积在位置 $(i,j)$ 处的输出可写为：
 
-$$
-Y_{ij} = \sum_{u=1}^{K_h}\sum_{v=1}^{K_w} X_{i+u-1,\,j+v-1} W_{uv} + b
-$$
+$ Y_{ij} = \sum_{u=1}^{K_h}\sum_{v=1}^{K_w} X_{i+u-1,\,j+v-1} W_{uv} + b $
 
 其中，$X \in \mathbb{R}^{H\times W}$ 表示输入特征图，$W \in \mathbb{R}^{K_h\times K_w}$ 表示卷积核，$b$ 表示偏置，$Y_{ij}$ 表示输出特征图矩阵 $Y$ 在第 $i$ 行第 $j$ 列处的元素。卷积层的作用就是用卷积核在输入矩阵上滑动，从而提取局部模式。
 
@@ -261,15 +255,11 @@ W_{out} = \left\lfloor \frac{W + 2P_w - K_w}{S_w} \right\rfloor + 1 $
 
 若池化窗口大小为 $p\times q$，则最大池化可表示为：
 
-$$
-Y_{ij} = \max_{1 \le u \le p,\,1 \le v \le q} X_{i+u-1,\,j+v-1}
-$$
+$ Y_{ij} = \max_{1 \le u \le p,\,1 \le v \le q} X_{i+u-1,\,j+v-1} $
 
 平均池化可表示为：
 
-$$
-Y_{ij} = \frac{1}{pq} \sum_{u=1}^{p}\sum_{v=1}^{q} X_{i+u-1,\,j+v-1}
-$$
+$ Y_{ij} = \frac{1}{pq} \sum_{u=1}^{p}\sum_{v=1}^{q} X_{i+u-1,\,j+v-1} $
 
 其中，$X$ 为输入特征图矩阵，$Y$ 为池化后的输出特征图矩阵。最大池化更强调局部最显著特征，平均池化则更强调整体平滑信息。
 
@@ -292,7 +282,7 @@ $$
 
 - $ J(\theta,\phi) = \sum_{i=1}^{N} \ell\bigl(x_i,\hat{x}_i\bigr) $
 
-其中， $ \hat{x}_i = g_{\phi}(f_{\theta}(x_i)) $ 。若输入为连续值数据，常用平方误差损失：
+其中，$ \hat{x}_i = g_{\phi}(f_{\theta}(x_i)) $。若输入为连续值数据，常用平方误差损失：
 
 - $ \ell(x,\hat{x}) = \frac{1}{2}\lVert x-\hat{x} \rVert_2^2 $
 
@@ -318,9 +308,7 @@ $$
 
 模型学习逆过程：
 
-$$
-p_\theta(x_{t-1}\mid x_t)
-$$
+- $ p_\theta(x_{t-1}\mid x_t) $
 
 通过不断迭代去噪，最终可以从随机噪声生成高质量样本。扩散模型近年来在图像生成等任务中表现非常突出。
 
@@ -383,10 +371,10 @@ PE_{(pos,2i+1)} = \cos\left(\frac{pos}{10000^{2i/d}}\right) $
 
 - $ \operatorname{Attention}(Q,K,V) = \operatorname{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V $
 
-- $ \operatorname{MultiHead}(Q,K,V) = \operatorname{Concat}(head_1,\dots,head_h)W^O $
+- $ \operatorname{MultiHead}(Q,K,V) = \operatorname{Concat}(head_1,\dots,head_h)W^{O} $
 
 其中每个头满足
 
-- $ head_i = \operatorname{Attention}(QW_i^Q,KW_i^K,VW_i^V) $
+- $ head_i = \operatorname{Attention}(QW_i^{Q},KW_i^{K},VW_i^{V}) $
 
 这种机制使 Transformer 在自然语言处理、计算机视觉等领域都取得了非常好的效果。

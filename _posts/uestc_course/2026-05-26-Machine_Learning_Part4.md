@@ -22,14 +22,10 @@ tags:
 其中 $C_k$ 表示第 $k$ 个类别。
 
 - 后验概率（Posterior Probability）：在观测到样本 $x$ 之后，样本属于类别 $C_k$ 的概率，记为
-$$
-P(C_k\mid x)
-$$
+- $ P(C_k\mid x) $
 
 - 类条件概率：在类别 $C_k$ 已知的条件下，样本 $x$ 出现的概率，记为
-$$
-P(x\mid C_k)
-$$
+- $ P(x\mid C_k) $
 它刻画了“该类生成这个样本的可能性”。
 
 - 证据（Evidence）：样本 $x$ 出现的总体概率，记为
@@ -60,32 +56,22 @@ $$
 - 最大后验概率分类准则（二分类）：
 
 设类别为 $\omega_1,\omega_2$，则样本 $x$ 的分类结果为
-$$
-x \to \omega^* = \arg\max_{\omega_i} P(\omega_i\mid x)
-$$
+- $ x \to \omega^* = \arg\max_{\omega_i} P(\omega_i\mid x) $
 对于二分类任务，只需比较
 
-$$
-P(\omega_1\mid x) \quad \text{与} \quad P(\omega_2\mid x)
-$$
+- $ P(\omega_1\mid x) \quad \text{与} \quad P(\omega_2\mid x) $
 
 根据贝叶斯公式，有
 
-$$
-P(\omega_i\mid x) = \frac{p(x\mid \omega_i)P(\omega_i)}{p(x)}, \qquad i=1,2
-$$
+- $ P(\omega_i\mid x) = \frac{p(x\mid \omega_i)P(\omega_i)}{p(x)}, \qquad i=1,2 $
 
 因此只需比较
 
-$$
-p(x\mid \omega_1)P(\omega_1) \quad \text{与} \quad p(x\mid \omega_2)P(\omega_2)
-$$
+- $ p(x\mid \omega_1)P(\omega_1) \quad \text{与} \quad p(x\mid \omega_2)P(\omega_2) $
 
 当先验概率相同时，即 $P(\omega_1)=P(\omega_2)$，只需比较类条件概率：
 
-$$
-p(x\mid \omega_1) \quad \text{与} \quad p(x\mid \omega_2)
-$$
+- $ p(x\mid \omega_1) \quad \text{与} \quad p(x\mid \omega_2) $
 
 多分类情形可以完全类似地推广。
 
@@ -121,9 +107,7 @@ $ \Lambda =
 
 最小风险分类准则就是选择条件风险最小的类别：
 
-$$
-x \to \omega^* = \arg\min_{\omega_j} R(\omega_j\mid x)
-$$
+- $ x \to \omega^* = \arg\min_{\omega_j} R(\omega_j\mid x) $
 
 该准则更加一般：当不同错误代价不同的时候，最小风险分类比单纯最小错误概率分类更符合实际需求。
 
