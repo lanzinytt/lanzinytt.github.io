@@ -72,6 +72,13 @@ tags:
 - **FPR（False Positive Rate，假正例率）**：实际为反的样本中，被错误预测为正的比例
 - $ FPR = \frac{FP}{FP + TN} $
 ![alt text](/img/in-post/Machine_Learning/C_curve.jpg)
+
+- **AUC（Area Under the ROC Curve）**：即 ROC 曲线下的面积，用于衡量分类器整体区分正负样本的能力，取值范围通常为 $[0,1]$，越大表示模型整体性能越好
+- 若将 ROC 曲线记为 $TPR = f(FPR)$，则其面积可表示为：
+    - $ AUC = \int_{0}^{1} TPR\, d(FPR) = \int_{0}^{1} f(x)\,dx $
+- 若 ROC 曲线由若干离散点连成，则常用梯形面积近似计算：
+    - $ AUC = \sum_{i=1}^{n-1} \frac{TPR_{i}+TPR_{i+1}}{2}(FPR_{i+1}-FPR_{i}) $
+
 ![alt text](/img/in-post/Machine_Learning/How_To_Draw_C_curve.png)
 - **F1 值**：查准率与召回率的调和平均，更适合综合衡量二者
 - $ F1 = \frac{2PR}{P + R} = \frac{2TP}{2TP + FP + FN} $
