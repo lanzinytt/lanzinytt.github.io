@@ -2,7 +2,7 @@
 layout:     post
 title:      "操作系统.26"
 subtitle:   " \"Operating_system\""
-date:       2026-5-27 20:00:00
+date:       2026-06-04 20:00:00
 author:     "LanZinYtt"
 header-img: "img/in-post/"
 catalog: true
@@ -291,7 +291,7 @@ if (pid==0){
         - 包含文件存储路径、状态、如何访问等
     - 一个文件可被不同进程打开多次
 - 所有IO的统一接口
-    - open，close，，read，write
+    - open，close，read，write
     - 使用前必须打开文件（open）
     - 地址寻址
     - 内核对读写进行缓冲
