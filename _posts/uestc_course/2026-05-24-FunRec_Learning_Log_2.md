@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "FunRec学习日志-精准偏好预测"
-subtitle: ' "FunRec_Learning_Log_1"'
+subtitle: ' "FunRec_Learning_Log_2"'
 date: 2026-05-02 12:00:00
 author: "LanZinYtt"
 header-img: ""
